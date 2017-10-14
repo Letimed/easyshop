@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { Firebase } from '@ionic-native/firebase';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { IonicStorageModule } from '@ionic/storage';
 
 export const config = {
    apiKey: "AIzaSyBH-4w_el5hFraTwNbJ5uQQxds7u0srb_g",
@@ -27,6 +28,7 @@ export const config = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
