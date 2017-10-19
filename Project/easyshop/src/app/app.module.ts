@@ -5,10 +5,12 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { CallApi } from '../pages/CallApi/CallApi';
 import { Firebase } from '@ionic-native/firebase';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
+import { PeopleServiceProvider } from '../providers/people-service/people-service';
 
 export const config = {
    apiKey: "AIzaSyBH-4w_el5hFraTwNbJ5uQQxds7u0srb_g",
@@ -23,7 +25,8 @@ export const config = {
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    CallApi
   ],
   imports: [
     BrowserModule,
@@ -34,13 +37,15 @@ export const config = {
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    CallApi
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Firebase,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PeopleServiceProvider
   ]
 })
 export class AppModule {}
