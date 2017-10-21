@@ -5,7 +5,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { CallApi } from '../pages/CallApi/CallApi';
+import { NavigationPage } from '../pages/navigation/navigation';
 import { Firebase } from '@ionic-native/firebase';
+import { Geolocation } from '@ionic-native/geolocation';
 
 
 @Component({
@@ -24,7 +26,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
-      { title: 'CallApi', component: CallApi }
+      { title: 'CallApi', component: CallApi },
+      { title: 'Navigation', component: NavigationPage }
     ];
 
   }
