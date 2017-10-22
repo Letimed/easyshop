@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { CallApi } from '../pages/CallApi/CallApi';
-import { NavigationPage } from '../pages/navigation/navigation';
+import { NavigationPage } from '../pages/Navigation/navigation';
 import { Firebase } from '@ionic-native/firebase';
 import { Geolocation } from '@ionic-native/geolocation';
 

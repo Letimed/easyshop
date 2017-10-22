@@ -6,7 +6,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { CallApi } from '../pages/CallApi/CallApi';
-import { NavigationPage } from '../pages/navigation/navigation';
+import { NavigationPage } from '../pages/Navigation/navigation';
 import { Firebase } from '@ionic-native/firebase';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,6 +14,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps'
 import { IonicStorageModule } from '@ionic/storage';
 import { PeopleServiceProvider } from '../providers/people-service/people-service';
+import { HttpModule} from '@angular/http';
 
 export const config = {
    apiKey: "AIzaSyBH-4w_el5hFraTwNbJ5uQQxds7u0srb_g",
@@ -34,6 +35,7 @@ export const config = {
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
