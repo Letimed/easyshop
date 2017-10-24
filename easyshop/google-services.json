@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "307341440247",
+    "firebase_url": "https://easyshop-bde02.firebaseio.com",
+    "project_id": "easyshop-bde02",
+    "storage_bucket": "easyshop-bde02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307341440247:android:591bc36f1b439735",
+        "android_client_info": {
+          "package_name": "com.easyshop.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307341440247-20j80f81bi5fr6177rvadg34ff5nbnm1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDHDiPQ0gDvgm-NfPZzgeOUujG_oTovyc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
