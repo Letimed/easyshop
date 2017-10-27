@@ -3,18 +3,16 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <span>
+    <ion-icon  id="iconeNav"  md="md-settings"></ion-icon>
+    <ion-icon  id="iconeNav"  md="logo-facebook"></ion-icon>
+    </span>
   </ion-navbar>
 </ion-header>
-
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+<ion-content>
+  <button ion-button full id="mainButton">Générer une liste de course</button>
+  <button ion-button full id="mainButton">Ajouter un produit</button>
+  <button ion-button full id="mainButton">Ajouter une recette</button>
+  <button ion-button full id="mainButton" (click)="geoLocButton()">Magasin alentours</button>
+  <button ion-button full id="mainButton">Options</button>
 </ion-content>

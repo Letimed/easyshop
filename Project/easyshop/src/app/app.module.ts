@@ -14,6 +14,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps'
 import { IonicStorageModule } from '@ionic/storage';
 import { PeopleServiceProvider } from '../providers/people-service/people-service';
+import { ShopService } from '../providers/shop-service/shop-service';
 import { HttpModule} from '@angular/http';
 
 export const config = {
@@ -54,7 +55,8 @@ export const config = {
     Geolocation,
     GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PeopleServiceProvider
+    PeopleServiceProvider,
+    ShopService
   ]
 })
 export class AppModule {}
