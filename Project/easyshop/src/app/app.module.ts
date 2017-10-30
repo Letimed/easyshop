@@ -4,9 +4,9 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
-import { CallApi } from '../pages/CallApi/CallApi';
 import { NavigationPage } from '../pages/Navigation/navigation';
+import { RecettePage } from '../pages/Recette/recette';
+import { LoginPage } from '../pages/Login/login';
 import { Firebase } from '@ionic-native/firebase';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -15,6 +15,7 @@ import { GoogleMaps } from '@ionic-native/google-maps'
 import { IonicStorageModule } from '@ionic/storage';
 import { PeopleServiceProvider } from '../providers/people-service/people-service';
 import { HttpModule} from '@angular/http';
+import { Facebook } from '@ionic-native/facebook';
 
 export const config = {
    apiKey: "AIzaSyBH-4w_el5hFraTwNbJ5uQQxds7u0srb_g",
@@ -29,9 +30,9 @@ export const config = {
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
-    CallApi,
-    NavigationPage
+    NavigationPage,
+    LoginPage,
+    RecettePage
   ],
   imports: [
     BrowserModule,
@@ -43,9 +44,9 @@ export const config = {
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
-    CallApi,
-    NavigationPage
+    NavigationPage,
+    LoginPage,
+    RecettePage
   ],
   providers: [
     StatusBar,
@@ -53,6 +54,7 @@ export const config = {
     Firebase,
     Geolocation,
     GoogleMaps,
+    Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PeopleServiceProvider
   ]

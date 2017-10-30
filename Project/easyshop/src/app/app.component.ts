@@ -3,11 +3,13 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
-import { CallApi } from '../pages/CallApi/CallApi';
 import { NavigationPage } from '../pages/Navigation/navigation';
-import { Firebase } from '@ionic-native/firebase';
+import { RecettePage } from '../pages/Recette/recette';
+import { LoginPage } from '../pages/Login/login';
+//import { Firebase } from '@ionic-native/firebase';
+import firebase from 'firebase';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 
 @Component({
@@ -20,14 +22,23 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen/**, private firebase: Firebase */) {
-  this.initializeApp();
+  fireconfig = {
+    apiKey: "AIzaSyBH-4w_el5hFraTwNbJ5uQQxds7u0srb_g",
+    authDomain: "easyshoppy-5f0d7.firebaseapp.com",
+    databaseURL: "https://easyshoppy-5f0d7.firebaseio.com",
+    projectId: "easyshoppy-5f0d7",
+    storageBucket: "easyshoppy-5f0d7.appspot.com",
+    messagingSenderId: "378512581486"
+  };
+
+  constructor(private fb: Facebook, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  firebase.initializeApp(this.fireconfig);
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'CallApi', component: CallApi },
-      { title: 'Navigation', component: NavigationPage }
+      { title: 'Navigation', component: NavigationPage },
+      { title: 'Ajouter recette', component: RecettePage },
+      { title: 'login', component: LoginPage }
     ];
 
   }
@@ -38,6 +49,12 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      //TEST FB CONNECT
+      //this.fb.login(['public_profile', 'user_friends', 'email'])
+        //.then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
+        //.catch(e => console.log('Error logging into Facebook', e));
+        //this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
     });
   }
 
