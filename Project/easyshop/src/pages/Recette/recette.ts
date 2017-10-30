@@ -11,7 +11,7 @@ import { Storage } from '@ionic/storage';
 export class RecettePage {
 
   searchQuery: string = '';
-  items: string[];
+  items: string[] = [];
   recette: any[] = [];
 
   constructor(private storage: Storage) {
@@ -23,9 +23,9 @@ export class RecettePage {
     this.storage.forEach((index, key, value) => {
     if (key != null && key[0] == "P")
     		{
-    		  console.log("boucle : " + i);
           let parsedKey = key.split("_");
-          let parsedValue = index.split("~");
+     			let parsedValue = index.split("~");
+    		  console.log("boucle : " + i);
     			this.items[i] = "Produit : \'" + parsedKey[1] + "\'Prix : " + parsedValue[1] + "€";
     			i++;
     		}
