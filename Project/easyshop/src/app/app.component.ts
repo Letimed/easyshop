@@ -4,18 +4,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { NavigationPage } from '../pages/Navigation/navigation';
-<<<<<<< HEAD
 import { RecettePage } from '../pages/Recette/recette';
 import { LoginPage } from '../pages/Login/login';
-//import { Firebase } from '@ionic-native/firebase';
 import firebase from 'firebase';
-=======
 import { ListePage } from '../pages/ListesDeCourses/liste';
 import { OptionPage } from '../pages/options/options';
 import { ProduitPage } from '../pages/produits/produits';
 import { RecettePage } from '../pages/recettes/recettes';
 import { Firebase } from '@ionic-native/firebase';
->>>>>>> abb192e1bf236cddd10d6a7d989b429aa18f844c
+
 import { Geolocation } from '@ionic-native/geolocation';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
@@ -30,7 +27,6 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-<<<<<<< HEAD
   fireconfig = {
     apiKey: "AIzaSyBH-4w_el5hFraTwNbJ5uQQxds7u0srb_g",
     authDomain: "easyshoppy-5f0d7.firebaseapp.com",
@@ -40,16 +36,7 @@ export class MyApp {
     messagingSenderId: "378512581486"
   };
 
-  constructor(private fb: Facebook, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-  firebase.initializeApp(this.fireconfig);
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Navigation', component: NavigationPage },
-      { title: 'Ajouter recette', component: RecettePage },
-      { title: 'login', component: LoginPage }
-=======
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen/**, private firebase: Firebase */) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
   this.initializeApp();
 
     this.pages = [
@@ -58,8 +45,9 @@ export class MyApp {
       { title: 'Ajouter un produit', component: ProduitPage },
       { title: 'Ajouter une recette', component: RecettePage },
       { title: 'Magasins Alentours', component: NavigationPage },
-      { title: 'Options', component: OptionPage }
->>>>>>> abb192e1bf236cddd10d6a7d989b429aa18f844c
+      { title: 'Options', component: OptionPage },
+      { title: 'login', component: LoginPage },
+      { title: 'Ajouter recette', component: RecettePage }
     ];
 
   }

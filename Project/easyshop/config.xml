@@ -100,7 +100,4 @@
     <plugin name="cordova-plugin-whitelist" spec="^1.3.2" />
     <plugin name="cordova-sqlite-storage" spec="^2.0.4" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
-=======
-    <plugin name="cordova-sqlite-storage" spec="^2.0.4" />
->>>>>>> abb192e1bf236cddd10d6a7d989b429aa18f844c
 </widget>

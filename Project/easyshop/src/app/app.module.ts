@@ -2,19 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-<<<<<<< HEAD
+
 import { HomePage } from '../pages/home/home';
 import { NavigationPage } from '../pages/Navigation/navigation';
 import { RecettePage } from '../pages/Recette/recette';
 import { LoginPage } from '../pages/Login/login';
-=======
-import { HomePage } from '../pages/home/home'
 import { ListePage } from '../pages/ListesDeCourses/liste'
-import { NavigationPage } from '../pages/Navigation/navigation';
 import { OptionPage } from '../pages/options/options';
 import { ProduitPage } from '../pages/produits/produits';
 import { RecettePage } from '../pages/recettes/recettes';
->>>>>>> abb192e1bf236cddd10d6a7d989b429aa18f844c
+
 import { Firebase } from '@ionic-native/firebase';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -41,13 +38,10 @@ export const config = {
     MyApp,
     HomePage,
     NavigationPage,
-<<<<<<< HEAD
     LoginPage,
-=======
     ListePage,
     OptionPage,
     ProduitPage,
->>>>>>> abb192e1bf236cddd10d6a7d989b429aa18f844c
     RecettePage
   ],
   imports: [
@@ -61,13 +55,10 @@ export const config = {
     MyApp,
     HomePage,
     NavigationPage,
-<<<<<<< HEAD
     LoginPage,
-=======
     ListePage,
     OptionPage,
     ProduitPage,
->>>>>>> abb192e1bf236cddd10d6a7d989b429aa18f844c
     RecettePage
   ],
   providers: [
