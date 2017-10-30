@@ -1,0 +1,32 @@
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input type="text" [value]="username" [(ngModel)]="username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" [value]="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div padding>
+    <button ion-button full (click)='login();'>Login</button>
+    <button ion-button full (click)='facebookLogin();'>Facebook Login</button>
+  </div>
+
+  <ion-card *ngIf="userProfile">
+    <img [src]="userProfile.photoURL"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{ userProfile.displayName }}
+      </ion-card-title>
+      <p>
+        The UID for this new user is {{userProfile.uid}} and the email is {{userProfile.email}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

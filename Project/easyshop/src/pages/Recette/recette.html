@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Add Recette</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+  <h3>Recette</h3>
+
+  <ion-item>
+    <ion-label fixed>Nom recette</ion-label>
+    <ion-input type="text" value=""></ion-input>
+  </ion-item>
+
+  <br />
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+        {{ item }}
+    </button>
+
+  <ion-row>
+    <button (click)="addRecette" ion-button block>Valider</button>
+  </ion-row>
+</ion-content>
