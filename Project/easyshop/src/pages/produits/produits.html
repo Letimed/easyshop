@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+	<ion-item>
+    	<ion-label floating>Nom du produit</ion-label>
+    	<ion-input type="text" [(ngModel)]="productName"></ion-input>
+  	</ion-item>
+
+  	<ion-item>
+    	<ion-label floating>Unitée de mesure (vide si aucune)</ion-label>
+    	<ion-input type="text" [(ngModel)]="productUnite"></ion-input>
+  	</ion-item>
+
+  	<ion-item>
+    	<ion-label floating>Prix du produit en €</ion-label>
+    	<ion-input type="text" [(ngModel)]="productPrice"></ion-input>
+  	</ion-item>
+
+	<button ion-button full color="dark" id="mainButton" (click)="addProduct()">Ajouter un nouveau produit</button>
+
+  	<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  	<ion-list>
+  		<button ion-item *ngFor="let item of product" (click)="showConfirm(item)">
+    		{{ item }}
+    	<ion-icon name="md-close" style="float: right"></ion-icon>
+  		</button>
+	</ion-list>
+</ion-content>
