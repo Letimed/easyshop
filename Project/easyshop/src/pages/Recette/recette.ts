@@ -24,7 +24,9 @@ export class RecettePage {
     if (key != null && key[0] == "P")
     		{
     		  console.log("boucle : " + i);
-    			this.items[i] = "Produit : \'" + parsedKey[1] + Prix : " + parsedValue[1] + "€";
+          let parsedKey = key.split("_");
+          let parsedValue = index.split("~");
+    			this.items[i] = "Produit : \'" + parsedKey[1] + "\'Prix : " + parsedValue[1] + "€";
     			i++;
     		}
   		});
