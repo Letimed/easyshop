@@ -4,15 +4,15 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <span>
-    <ion-icon  id="iconeNav"  md="md-settings"></ion-icon>
-    <ion-icon  id="iconeNav"  md="logo-facebook"></ion-icon>
+    <button ion-button icon-only small id="iconeNav" color="dark" (click)="settingButton()"><ion-icon name="md-settings"></ion-icon></button>
+    <button ion-button icon-only small id="iconeNav" color="dark" (click)="facebookButton()"><ion-icon name="logo-facebook"></ion-icon></button>
     </span>
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <button ion-button full id="mainButton">Générer une liste de course</button>
-  <button ion-button full id="mainButton">Ajouter un produit</button>
-  <button ion-button full id="mainButton">Ajouter une recette</button>
-  <button ion-button full id="mainButton" (click)="geoLocButton()">Magasin alentours</button>
-  <button ion-button full id="mainButton">Options</button>
+  <button ion-button full color="dark" id="mainButton" (click)="listeButton()">Listes de courses</button>
+  <button ion-button full color="dark" id="mainButton" (click)="produitButton()">Ajouter un produit</button>
+  <button ion-button full color="dark" id="mainButton" (click)="recetteButton()">Ajouter une recette</button>
+  <button ion-button full color="dark" id="mainButton" (click)="geoLocButton()">Magasin alentours</button>
+  <button ion-button full color="dark" id="mainButton" (click)="optionButton()">Options</button>
 </ion-content>
