@@ -23,8 +23,10 @@ export class RecettePage {
     this.storage.forEach((index, key, value) => {
     if (key != null && key[0] == "P")
     		{
+          let parsedKey = key.split("_");
+     			let parsedValue = index.split("~");
     		  console.log("boucle : " + i);
-    			this.items[i] = "Produit : \'" + parsedKey[1] + Prix : " + parsedValue[1] + "€";
+    			this.items[i] = "Produit : \'" + parsedKey[1] + "\' Unité : " + parsedValue[0] + " Prix : " + parsedValue[1] + "€";
     			i++;
     		}
   		});
