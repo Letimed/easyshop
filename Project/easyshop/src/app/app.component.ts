@@ -10,7 +10,7 @@ import firebase from 'firebase';
 import { ListePage } from '../pages/ListesDeCourses/liste';
 import { OptionPage } from '../pages/options/options';
 import { ProduitPage } from '../pages/produits/produits';
-import { RecettePage } from '../pages/recettes/recettes';
+//import { RecettePage } from '../pages/recettes/recettes';
 import { Firebase } from '@ionic-native/firebase';
 
 import { Geolocation } from '@ionic-native/geolocation';
@@ -38,7 +38,6 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
   this.initializeApp();
-
     this.pages = [
       { title: 'Accueil', component: HomePage },
       { title: 'Listes de courses', component: ListePage },
@@ -49,19 +48,12 @@ export class MyApp {
       { title: 'login', component: LoginPage },
       { title: 'Ajouter recette', component: RecettePage }
     ];
-
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-
-      //TEST FB CONNECT
-      //this.fb.login(['public_profile', 'user_friends', 'email'])
-        //.then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
-        //.catch(e => console.log('Error logging into Facebook', e));
-        //this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
     });
   }
 

@@ -10,7 +10,7 @@ import { LoginPage } from '../pages/Login/login';
 import { ListePage } from '../pages/ListesDeCourses/liste'
 import { OptionPage } from '../pages/options/options';
 import { ProduitPage } from '../pages/produits/produits';
-import { RecettePage } from '../pages/recettes/recettes';
+//import { RecettePage } from '../pages/recettes/recettes';
 
 import { Firebase } from '@ionic-native/firebase';
 import { StatusBar } from '@ionic-native/status-bar';

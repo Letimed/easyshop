@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+
 
 @Component({
   selector: 'page-recette',
@@ -12,14 +14,23 @@ export class RecettePage {
   items: string[];
   recette: any[] = [];
 
-  constructor() {
+  constructor(private storage: Storage) {
     this.initializeItems();
   }
 
   initializeItems() {
-    this.items = [
-      'ingredient 1',
-      'ingredient 2',
+    let i = 0;
+    this.storage.forEach((index, key, value) => {
+    if (key != null && key[0] == "P")
+    		{
+    		  console.log("boucle : " + i);
+    			this.items[i] = "Produit : \'" + parsedKey[1] + Prix : " + parsedValue[1] + "€";
+    			i++;
+    		}
+  		});
+    /**this.items = [
+     'ingredient 1',
+     'ingredient 2',
       'ingredient 3',
       'ingredient 4',
       'ingredient 5',
@@ -28,8 +39,22 @@ export class RecettePage {
       'ingredient 8',
       'ingredient 9',
       'ingredient 10',
-    ];
+    ];*/
   }
+
+  fillProduct()
+	{
+		let i = 0;
+  		this.storage.forEach((index, key, value) => {
+  		if (key != null && key[0] == "P")
+  		{
+  			let parsedKey = key.split("_");
+  			let parsedValue = index.split("~");
+  			this.items[i] = "Produit : \'" + parsedKey[1] + "\' Unité : " + parsedValue[0] + " Prix : " + parsedValue[1] + "€";
+  			i++;
+  		}
+		});
+	}
 
   getItems(ev: any) {
     // Reset items back to all of the items

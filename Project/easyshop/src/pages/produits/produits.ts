@@ -18,8 +18,6 @@ export class ProduitPage {
   	this.fillProduct();
   }
 
-
-
   async addProduct()
 {
 
@@ -92,7 +90,7 @@ export class ProduitPage {
           handler: () => {
           	let stringToRm = item.split("\'");
             this.storage.remove("P_" + stringToRm[1]);
-            this.fillProduct();      
+            this.fillProduct();
 			let toast = this.toastCtrl.create({
       		message: 'Produit supprimé',
       		duration: 3000
@@ -104,5 +102,4 @@ export class ProduitPage {
     });
     confirm.present();
   }
-
 }
