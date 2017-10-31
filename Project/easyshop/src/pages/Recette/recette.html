@@ -13,8 +13,8 @@
   <h3>Recette</h3>
 
   <ion-item>
-    <ion-label fixed>Nom recette</ion-label>
-    <ion-input type="text" value=""></ion-input>
+    <ion-label floating>Nom Recette :</ion-label>
+    <ion-input type="text" value="" [(ngModel)]="recetteName"></ion-input>
   </ion-item>
 
   <br />
@@ -24,6 +24,6 @@
     </button>
 
   <ion-row>
-    <button (click)="addRecette" ion-button block>Valider</button>
+    <button (click)="addRecette()" ion-button block>Valider</button>
   </ion-row>
 </ion-content>

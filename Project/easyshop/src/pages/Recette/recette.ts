@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-
+import { ToastController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-recette',
@@ -11,10 +12,11 @@ import { Storage } from '@ionic/storage';
 export class RecettePage {
 
   searchQuery: string = '';
+  recetteName: any;
   items: string[] = [];
   recette: any[] = [];
 
-  constructor(private storage: Storage) {
+  constructor(private storage: Storage, public toastCtrl: ToastController, public alertCtrl: AlertController) {
     this.initializeItems();
   }
 
@@ -26,37 +28,11 @@ export class RecettePage {
           let parsedKey = key.split("_");
      			let parsedValue = index.split("~");
     		  console.log("boucle : " + i);
-    			this.items[i] = "Produit : \'" + parsedKey[1] + "\'Prix : " + parsedValue[1] + "€";
+    			this.items[i] = parsedKey[1];
     			i++;
     		}
   		});
-    /**this.items = [
-     'ingredient 1',
-     'ingredient 2',
-      'ingredient 3',
-      'ingredient 4',
-      'ingredient 5',
-      'ingredient 6',
-      'ingredient 7',
-      'ingredient 8',
-      'ingredient 9',
-      'ingredient 10',
-    ];*/
   }
-
-  fillProduct()
-	{
-		let i = 0;
-  		this.storage.forEach((index, key, value) => {
-  		if (key != null && key[0] == "P")
-  		{
-  			let parsedKey = key.split("_");
-  			let parsedValue = index.split("~");
-  			this.items[i] = "Produit : \'" + parsedKey[1] + "\' Unité : " + parsedValue[0] + " Prix : " + parsedValue[1] + "€";
-  			i++;
-  		}
-		});
-	}
 
   getItems(ev: any) {
     // Reset items back to all of the items
@@ -73,12 +49,43 @@ export class RecettePage {
     }
   }
 
-  addRecette() {
-  // create recette in locale storage
+  addRecette()
+  {
+  	if (this.recette == null){
+  		let toast = this.toastCtrl.create({
+            	message: 'recette inéxistante',
+            	duration: 3000
+        });
+      toast.present();
+   }
+   else if (this.recetteName == null) {
+  	let toast = this.toastCtrl.create({
+                	message: 'Entrez un nom pour votre recette',
+                	duration: 3000
+            });
+    toast.present();
+    }
+  	else {
+  		this.storage.set("R_" + this.recetteName, this.recette);
+  		let toast = this.toastCtrl.create({
+      	message: 'La recette a bien été ajouté',
+      	duration: 3000
+    	});
+    	toast.present();
+    	/////////////////////////// debug /////////////////////////
+    	/**let i = 0
+    	console.log(this.recetteName);
+      for (i; i < 5; i++)
+      {
+        console.log(this.recette[i]);
+       i = i + 1;
+      }*/
+      ///////////////////////////////////////////////////////////
+	  }
   }
 
   itemSelected(item: string) {
       console.log("Selected Item", item);
       this.recette.push(item);
-    }
+  }
 }

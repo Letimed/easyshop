@@ -19,8 +19,7 @@ export class ProduitPage {
   }
 
   async addProduct()
-{
-
+  {
   	if (this.productUnite == null)
   		this.productUnite = "Aucune";
   	if (this.productPrice == null)
@@ -36,15 +35,15 @@ export class ProduitPage {
       	duration: 3000
     	});
     	toast.present();
-	}
-	else {
-		let toast = this.toastCtrl.create({
+	  }
+	  else {
+		  let toast = this.toastCtrl.create({
       	message: 'Nom de produit incorrect',
       	duration: 3000
       });
 		   toast.present();
   	}
-}
+  }
 
 	fillProduct()
 	{
