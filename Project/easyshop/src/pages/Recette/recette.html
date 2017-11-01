@@ -3,19 +3,23 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Add Recette</ion-title>
+    <ion-title>Ajout Recette</ion-title>
   </ion-navbar>
 </ion-header>
 
-
-
 <ion-content padding>
-  <h3>Recette</h3>
+  <button -ion-button color="dark" (click)="goToMesRecettes()"> Mes recettes </button>
 
   <ion-item>
     <ion-label floating>Nom Recette :</ion-label>
     <ion-input type="text" value="" [(ngModel)]="recetteName"></ion-input>
   </ion-item>
+
+  <ion-list no-line inset>
+    <ion-item ion-item *ngFor="let ing of recette">
+      {{ ing }}
+    </ion-item>
+  </ion-list>
 
   <br />
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
@@ -23,7 +27,8 @@
         {{ item }}
     </button>
 
+
   <ion-row>
-    <button (click)="addRecette()" ion-button block>Valider</button>
+    <button ion-button full color="dark"  (click)="addRecette()">Valider</button>
   </ion-row>
 </ion-content>

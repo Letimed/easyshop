@@ -10,7 +10,7 @@ import { LoginPage } from '../pages/Login/login';
 import { ListePage } from '../pages/ListesDeCourses/liste'
 import { OptionPage } from '../pages/options/options';
 import { ProduitPage } from '../pages/produits/produits';
-//import { RecettePage } from '../pages/recettes/recettes';
+import { mesRecettes } from '../pages/mesRecettes/mesRecettes';
 
 import { Firebase } from '@ionic-native/firebase';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -42,7 +42,8 @@ export const config = {
     ListePage,
     OptionPage,
     ProduitPage,
-    RecettePage
+    RecettePage,
+    mesRecettes
   ],
   imports: [
     BrowserModule,
@@ -59,7 +60,8 @@ export const config = {
     ListePage,
     OptionPage,
     ProduitPage,
-    RecettePage
+    RecettePage,
+    mesRecettes
   ],
   providers: [
     StatusBar,

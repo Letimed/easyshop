@@ -6,16 +6,15 @@ import { HomePage } from '../pages/home/home';
 import { NavigationPage } from '../pages/Navigation/navigation';
 import { RecettePage } from '../pages/Recette/recette';
 import { LoginPage } from '../pages/Login/login';
-import firebase from 'firebase';
 import { ListePage } from '../pages/ListesDeCourses/liste';
 import { OptionPage } from '../pages/options/options';
 import { ProduitPage } from '../pages/produits/produits';
-//import { RecettePage } from '../pages/recettes/recettes';
+import { mesRecettes } from '../pages/mesRecettes/mesRecettes';
 import { Firebase } from '@ionic-native/firebase';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
-
+import firebase from 'firebase';
 
 @Component({
   templateUrl: 'app.html'
@@ -46,7 +45,8 @@ export class MyApp {
       { title: 'Magasins Alentours', component: NavigationPage },
       { title: 'Options', component: OptionPage },
       { title: 'login', component: LoginPage },
-      { title: 'Ajouter recette', component: RecettePage }
+      { title: 'ajouter recette', component: RecettePage },
+      { title: 'mesRecettes', component: mesRecettes }
     ];
   }
 
