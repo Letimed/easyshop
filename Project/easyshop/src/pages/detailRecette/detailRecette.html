@@ -3,15 +3,16 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-title>Ajout Recette</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content>
-</ion-content>
 
 <ion-content padding>
-  <ion-list>
-    <button ion-item *ngFor="let recette of items" (click)="itemSelected(recette)">
-      {{ recette }}
-    </button>
+
+  <ion-list no-line inset>
+    <ion-item ion-item *ngFor="let ing of myRecette">
+      {{ ing }}
+    </ion-item>
   </ion-list>
+
 </ion-content>

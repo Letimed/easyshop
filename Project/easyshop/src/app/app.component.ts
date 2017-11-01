@@ -10,6 +10,7 @@ import { ListePage } from '../pages/ListesDeCourses/liste';
 import { OptionPage } from '../pages/options/options';
 import { ProduitPage } from '../pages/produits/produits';
 import { mesRecettes } from '../pages/mesRecettes/mesRecettes';
+import { DetailRecette } from '../pages/detailRecette/detailRecette';
 import { Firebase } from '@ionic-native/firebase';
 
 import { Geolocation } from '@ionic-native/geolocation';
