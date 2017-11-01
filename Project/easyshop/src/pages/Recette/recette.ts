@@ -18,6 +18,7 @@ export class RecettePage {
 
   constructor(private storage: Storage, public toastCtrl: ToastController, public alertCtrl: AlertController) {
     this.initializeItems();
+
   }
 
   initializeItems() {
@@ -49,7 +50,7 @@ export class RecettePage {
     }
   }
 
-  addRecette()
+  async addRecette()
   {
   	if (this.recette == null){
   		let toast = this.toastCtrl.create({
@@ -66,12 +67,15 @@ export class RecettePage {
     toast.present();
     }
   	else {
-  		this.storage.set("R_" + this.recetteName, this.recette);
+  		await this.storage.set("R_" + this.recetteName, this.recette);
   		let toast = this.toastCtrl.create({
       	message: 'La recette a bien été ajouté',
       	duration: 3000
     	});
     	toast.present();
+                  this.storage.get('R_chili').then((val) => {
+    console.log('value', val);
+  });
     	/////////////////////////// debug /////////////////////////
     	/**let i = 0
     	console.log(this.recetteName);
