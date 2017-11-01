@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { ToastController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { mesRecettes } from '../mesRecettes/mesRecettes';
 
 @Component({
   selector: 'page-recette',
@@ -16,7 +17,7 @@ export class RecettePage {
   items: string[] = [];
   recette: any[] = [];
 
-  constructor(private storage: Storage, public toastCtrl: ToastController, public alertCtrl: AlertController) {
+  constructor(private storage: Storage, public toastCtrl: ToastController, public alertCtrl: AlertController, public navCtrl: NavController) {
     this.initializeItems();
 
   }
@@ -28,7 +29,6 @@ export class RecettePage {
     		{
           let parsedKey = key.split("_");
      			let parsedValue = index.split("~");
-    		  console.log("boucle : " + i);
     			this.items[i] = parsedKey[1];
     			i++;
     		}
@@ -73,23 +73,39 @@ export class RecettePage {
       	duration: 3000
     	});
     	toast.present();
-                  this.storage.get('R_chili').then((val) => {
-    console.log('value', val);
-  });
-    	/////////////////////////// debug /////////////////////////
-    	/**let i = 0
-    	console.log(this.recetteName);
-      for (i; i < 5; i++)
-      {
-        console.log(this.recette[i]);
-       i = i + 1;
-      }*/
-      ///////////////////////////////////////////////////////////
+    	this.clearAll();
 	  }
   }
 
+  debug(){
+    this.storage.get('R_chili').then((val) => {
+    console.log('chili : ', val);});
+  }
+
+  clearAll(){
+  this.recetteName = null;
+  this.recette = null;
+ }
+
+  getListRecette(){
+  let i = 0;
+    this.storage.forEach((index, key, value) => {
+    if (key != null && key[0] == "R")
+    		{
+          let parsedKey = key.split("_");
+     			let parsedValue = index.split("~");
+    			this.recette[i] = parsedKey[1];
+    			i++;
+    		}
+  		});
+  }
+
   itemSelected(item: string) {
-      console.log("Selected Item", item);
+      //console.log("Selected Item", item);
       this.recette.push(item);
   }
+
+  goToMesRecettes() {
+    	this.navCtrl.push(mesRecettes);
+    }
 }

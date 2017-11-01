@@ -4,7 +4,8 @@ import { NavigationPage } from '../Navigation/navigation';
 import { ListePage } from '../ListesDeCourses/liste';
 import { OptionPage } from '../options/options';
 import { ProduitPage } from '../produits/produits';
-//import { RecettePage } from '../recettes/recettes';
+import { RecettePage } from '../Recette/recette';
+import { mesRecettes } from '../mesRecettes/mesRecettes';
 
 @Component({
   selector: 'page-home',
@@ -30,7 +31,11 @@ export class HomePage {
   }
 
   recetteButton() {
-    //this.navCtrl.push(RecettePage);
+    this.navCtrl.push(RecettePage);
+  }
+
+  mesRecetteButton() {
+    this.navCtrl.push(mesRecettes);
   }
 
   optionButton() {
@@ -44,6 +49,5 @@ export class HomePage {
   facebookButton() {
   	console.log("click facebookButton");
   }
-
 }
 
