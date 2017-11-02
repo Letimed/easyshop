@@ -99,4 +99,5 @@
         <variable name="APP_ID" value="122320931779870" />
         <variable name="APP_NAME" value="easyshop" />
     </plugin>
+    <plugin name="phonegap-plugin-push" spec="^2.0.0" />
 </widget>
