@@ -9,8 +9,6 @@ import { mesRecettes } from '../mesRecettes/mesRecettes';
 import { OneSignal } from '@ionic-native/onesignal';
 import { Http} from '@angular/http';
 
-
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
