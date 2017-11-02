@@ -79,7 +79,6 @@
     <allow-navigation href="http://192.168.0.47:8100" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="5000" />
-    <engine name="android" spec="^6.3.0" />
     <plugin name="com.oauthio.plugins.oauthio" spec="https://github.com/oauth-io/oauth-phonegap" />
     <plugin name="cordova-plugin-device" spec="^1.1.6" />
     <plugin name="cordova-plugin-firebase" spec="^0.1.24" />
@@ -99,5 +98,5 @@
         <variable name="APP_ID" value="122320931779870" />
         <variable name="APP_NAME" value="easyshop" />
     </plugin>
-    <plugin name="phonegap-plugin-push" spec="^2.0.0" />
+    <engine name="android" spec="~6.3.0" />
 </widget>
