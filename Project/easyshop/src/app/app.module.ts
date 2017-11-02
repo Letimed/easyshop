@@ -23,6 +23,8 @@ import { PeopleServiceProvider } from '../providers/people-service/people-servic
 import { ShopService } from '../providers/shop-service/shop-service';
 import { HttpModule} from '@angular/http';
 import { Facebook } from '@ionic-native/facebook';
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
+
 
 
 export const config = {
@@ -75,6 +77,7 @@ export const config = {
     Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PeopleServiceProvider,
+    Push,
     ShopService
   ]
 })
