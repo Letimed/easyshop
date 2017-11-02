@@ -6,7 +6,10 @@ import { OptionPage } from '../options/options';
 import { ProduitPage } from '../produits/produits';
 import { RecettePage } from '../Recette/recette';
 import { mesRecettes } from '../mesRecettes/mesRecettes';
-import { Push, PushObject, PushOptions } from '@ionic-native/push';
+import { OneSignal } from '@ionic-native/onesignal';
+import { Http} from '@angular/http';
+
+
 
 @Component({
   selector: 'page-home',
@@ -17,7 +20,24 @@ export class HomePage {
   userProfile: any = null;
 
 
-  constructor(public navCtrl: NavController, private push: Push) {}
+  constructor(public navCtrl: NavController, private oneSignal: OneSignal, private http: Http) {
+    this.oneSignal.startInit('f1c036d3-cd14-411b-846b-d5400c9edcc1', '378512581486');
+
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+
+    this.oneSignal.handleNotificationReceived().subscribe(() => {
+     // do something when notification is received
+     console.log("A");
+    });
+
+    this.oneSignal.handleNotificationOpened().subscribe(() => {
+    // do something when a notification is opened
+     console.log("B");
+    });
+
+    this.oneSignal.endInit();
+
+  }
 
   geoLocButton() {
   	this.navCtrl.push(NavigationPage);
@@ -51,38 +71,25 @@ export class HomePage {
   	console.log("click facebookButton");
   }
 
-  pushNotif()
-  {
-  this.push.hasPermission().then((res: any) => {
-
-    if (res.isEnabled) {
-      console.log('We have permission to send push notifications');
-    } else {
-      console.log('We do not have permission to send push notifications');
+  pushNotif() {
+    console.log("PushNotifButton");
+    this.oneSignal.getIds().then(ids => {
+      var body = {
+        app_id: 'f1c036d3-cd14-411b-846b-d5400c9edcc1',
+        include_player_ids: [ids.userId],
+        contents: {
+          en: "Notif Message"
+        },
+        headings: {
+          en: "Test Notification"
+        }
+      };
+      this.http.post('https://onesignal.com/api/v1/notifications', body).subscribe(data => {
+        console.log(data);
+      } , error => {
+        console.log(error);
+      });
+    });
     }
-
-  });
-
-  const options: PushOptions = {
-   android: {},
-   ios: {
-       alert: 'true',
-       badge: true,
-       sound: 'false'
-   },
-   windows: {},
-   browser: {
-       pushServiceURL: 'http://push.api.phonegap.com/v1/push'
-   }
-   };
-
-   const pushObject: PushObject = this.push.init(options);
-
-     pushObject.on('notification').subscribe((notification: any) => console.log('Received a notification', notification));
-
-    pushObject.on('registration').subscribe((registration: any) => console.log('Device registered', registration));
-
-    pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
-  }
 }
 

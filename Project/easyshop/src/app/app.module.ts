@@ -22,8 +22,9 @@ import { IonicStorageModule } from '@ionic/storage';
 import { PeopleServiceProvider } from '../providers/people-service/people-service';
 import { ShopService } from '../providers/shop-service/shop-service';
 import { HttpModule} from '@angular/http';
+import { Http } from '@angular/http';
 import { Facebook } from '@ionic-native/facebook';
-import { Push, PushObject, PushOptions } from '@ionic-native/push';
+import { OneSignal } from '@ionic-native/onesignal';
 
 
 
@@ -77,8 +78,8 @@ export const config = {
     Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PeopleServiceProvider,
-    Push,
-    ShopService
+    ShopService,
+    OneSignal,
   ]
 })
 export class AppModule {}
