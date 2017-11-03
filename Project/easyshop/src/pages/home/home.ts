@@ -19,7 +19,7 @@ export class HomePage {
 
 
   constructor(public navCtrl: NavController, private oneSignal: OneSignal, private http: Http) {
-    this.oneSignal.startInit('f1c036d3-cd14-411b-846b-d5400c9edcc1', '378512581486');
+    /*this.oneSignal.startInit('f1c036d3-cd14-411b-846b-d5400c9edcc1', '378512581486');
 
     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
 
@@ -34,7 +34,7 @@ export class HomePage {
     });
 
     this.oneSignal.endInit();
-
+  */
   }
 
   geoLocButton() {

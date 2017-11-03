@@ -14,9 +14,19 @@ import { NavParams } from 'ionic-angular';
 export class DetailRecette {
 
   myRecette: any[] = [];
+  myValues: string[] = [];
 
   constructor(private storage: Storage, public toastCtrl: ToastController, public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
     this.myRecette = navParams.get('selectedRecette');
+    this.getDetails();
+   }
+
+   async getDetails()
+   {
+   await this.storage.get('R_' + this.myRecette).then((val) => {
+   	this.myValues = val;
+    console.log(val);
+  });
    }
 
 }
