@@ -7,6 +7,7 @@ import { ProduitPage } from '../produits/produits';
 import { RecettePage } from '../Recette/recette';
 import { mesRecettes } from '../mesRecettes/mesRecettes';
 import { OneSignal } from '@ionic-native/onesignal';
+import { LoginPage } from '../Login/login';
 import { Http} from '@angular/http';
 
 @Component({
@@ -58,7 +59,7 @@ export class HomePage {
   }
 
   optionButton() {
-    this.navCtrl.push(OptionPage);
+    //this.navCtrl.push(OptionPage);
   }
 
   settingButton() {
@@ -67,6 +68,7 @@ export class HomePage {
 
   facebookButton() {
   	console.log("click facebookButton");
+    this.navCtrl.push(LoginPage);
   }
 
   pushNotif() {

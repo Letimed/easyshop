@@ -12,6 +12,8 @@ import { OptionPage } from '../pages/options/options';
 import { ProduitPage } from '../pages/produits/produits';
 import { mesRecettes } from '../pages/mesRecettes/mesRecettes';
 import { DetailRecette } from '../pages/detailRecette/detailRecette';
+import { generateList } from '../pages/generateListe/generateList';
+import { affichageRecette } from '../pages/affichageRecette/affichageRecette';
 
 import { Firebase } from '@ionic-native/firebase';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -48,7 +50,9 @@ export const config = {
     ProduitPage,
     RecettePage,
     mesRecettes,
-    DetailRecette
+    DetailRecette,
+    generateList,
+    affichageRecette
   ],
   imports: [
     BrowserModule,
@@ -67,7 +71,9 @@ export const config = {
     ProduitPage,
     RecettePage,
     mesRecettes,
-    DetailRecette
+    DetailRecette,
+    generateList,
+    affichageRecette
   ],
   providers: [
     StatusBar,

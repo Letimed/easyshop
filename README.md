@@ -41,6 +41,6 @@ Les fonctionnalité actuellement présente sont donc celle annoncé lors du cour
 	- Stockage des données sur le téléphones gérer correctement afin de ne pas perdre de données en cas de surchargre mémoire de l'appareil.
 	- Systéme de sideMenu facilitant la naviguation dans l'application.
 
-groupe numero :????
+groupe numero : 15s
 membre groupe : Quentin Vieira / Florian Camus-Martin
 Nous avons tout deux assistés au cours module hybrid.

@@ -9,7 +9,6 @@ import { DetailRecette } from '../detailRecette/detailRecette';
 })
 
 export class mesRecettes {
-
   items: any[] = [];
   recette: any[] = [];
 
