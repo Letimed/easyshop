@@ -6,7 +6,7 @@ Projet :
 Le but de l'application est de générer une liste de course.
 Cette liste de course sera générée automatiquement par l'application grâce aux recettes réalisées pas l'utilisateur au préalable.
 L'application est capable de trouver toutes les grandes surfaces se trouvant autour de l'utilisateur a un instant T Le projet finale conseillera quelle grandes surfaces sera la plus rentable pour celui ci.
-Le projet easyshop est donc une partie d'un projet de plus grand envergure qui donnera suite a une application plus conséquente.
+Le projet easyshop est donc une partie d'un projet de plus grand envergure qui donnera suite a une application plus conséquente, nous n'en sommes qu'aux prémices.
 De ce fait, certaines features n'ayant pas d'interet dans le projet finale on été intégrées afin de montrer que nous avons compris les concepts expliqués pendant le cours.
    - une page login avec facebook dans le but de montrer que nous avons compris la notion de Connection sécuriser(Oauth).
    - Systeme de push de notification (nous reflechissons actuellement a garder cette features pour le projet finale)
@@ -41,6 +41,6 @@ Les fonctionnalité actuellement présente sont donc celle annoncé lors du cour
 	- Stockage des données sur le téléphones gérer correctement afin de ne pas perdre de données en cas de surchargre mémoire de l'appareil.
 	- Systéme de sideMenu facilitant la naviguation dans l'application.
 
-groupe numero : 15s
+groupe numero : 15
 membre groupe : Quentin Vieira / Florian Camus-Martin
 Nous avons tout deux assistés au cours module hybrid.

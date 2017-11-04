@@ -72,9 +72,9 @@ export class NavigationPage {
 						{
 							return ;
 						}
-						if (j.latitude > myLat - 1 && j.latitude < myLat + 1)
+						if (j.latitude > myLat - 0.25 && j.latitude < myLat + 0.25)
 						{
-							if (j.longitude > myLong - 1 && j.longitude < myLong + 1)
+							if (j.longitude > myLong - 0.25 && j.longitude < myLong + 0.25)
 							{
 						//console.log(j.latitude + " " + j.longitude + " : " + j.name);
 						let mark = new LatLng(j.latitude,j.longitude);
