@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-label id="mainLabel">Recettes Séléctionnées</ion-label>
+  <ion-list>
+    <button ion-item *ngFor="let recetteSel of myRecette">
+      {{ recetteSel }}
+    </button>
+  </ion-list>
+
+
+  <ion-label id="mainLabel">Mes Recettes</ion-label>
+  <ion-list>
+    <button ion-item *ngFor="let recette of items" (click)="addRecette(recette)">
+      {{ recette }}
+    </button>
+  </ion-list>
+  <br>
+  <button ion-button full color="dark" id="mainButton" (click)="showList()">Générer ma liste</button>
+
+
+</ion-content>
