@@ -9,6 +9,7 @@ import { mesRecettes } from '../mesRecettes/mesRecettes';
 import { OneSignal } from '@ionic-native/onesignal';
 import { LoginPage } from '../Login/login';
 import { Http} from '@angular/http';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 @Component({
   selector: 'page-home',
@@ -19,8 +20,8 @@ export class HomePage {
   userProfile: any = null;
 
 
-  constructor(public navCtrl: NavController, private oneSignal: OneSignal, private http: Http) {
-    this.oneSignal.startInit('f1c036d3-cd14-411b-846b-d5400c9edcc1', '378512581486');
+  constructor(public navCtrl: NavController, private oneSignal: OneSignal, private http: Http, private sqlite: SQLite) {
+    /*this.oneSignal.startInit('f1c036d3-cd14-411b-846b-d5400c9edcc1', '378512581486');
 
     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
 
@@ -34,7 +35,18 @@ export class HomePage {
      console.log("B");
     });
 
-    this.oneSignal.endInit();
+    this.oneSignal.endInit();*/
+    console.log("hello");
+  this.sqlite.create({
+    name: 'data.db',
+    location: 'default'
+    })
+    .then((db: SQLiteObject) => {
+    db.executeSql('create table IF NOT EXISTS product(name TEXT, quantity INT)', {})
+      .then(() => console.log('Executed SQL'))
+      .catch(e => console.log(e));
+  })
+  .catch(e => console.log(e));
   }
 
   geoLocButton() {

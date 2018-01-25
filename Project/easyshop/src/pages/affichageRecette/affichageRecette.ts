@@ -12,18 +12,31 @@ import { NavParams } from 'ionic-angular';
 export class affichageRecette {
 	  myRecette: any[] = [];
 	  myProduit: any[] = [];
+	  myResult: any[] = [];
 
 	  constructor(public navCtrl: NavController, private storage: Storage, public navParams: NavParams) {
 	  	    this.myRecette = navParams.get('selectedRecette');
 	  	    this.fillProduit();
 		}
 
-	fillProduit()
+	async fillProduit()
 	{
 		for (let i of this.myRecette)
 		{
-			this.storage.get("R_" + i).then((val) => {
+			await this.storage.get("R_" + i).then((val) => {
 			this.myProduit.push(val);
+			let found = 0;
+			for (let j of this.myResult)
+			{
+				for (let k of j)
+				{
+					if (k == val)
+					{
+						console.log("found");
+						found = 1;
+					}
+				}
+			}
   			});
 		}
 	}

@@ -101,8 +101,30 @@ export class RecettePage {
   }
 
   itemSelected(item: string) {
-      //console.log("Selected Item", item);
-      this.recette.push(item);
+    let prompt = this.alertCtrl.create({
+      title: 'Ajout du Produit',
+      message: "Quelle quantité souhaité vous ajouté ?",
+      inputs: [
+        {
+          name: 'quantity',
+          placeholder: 'Quantité'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Annuler',
+          handler: data => {
+          }
+        },
+        {
+          text: 'Ajouter',
+          handler: data => {
+            this.recette.push(item + ":" + data.quantity);
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
 
   goToMesRecettes() {
