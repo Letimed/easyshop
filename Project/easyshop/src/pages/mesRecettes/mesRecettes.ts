@@ -32,5 +32,6 @@ export class mesRecettes {
     itemSelected(item: any) {
           this.recette.push(item);
           this.navCtrl.push(DetailRecette, {selectedRecette: this.recette});
+          this.recette = [];
       }
 }

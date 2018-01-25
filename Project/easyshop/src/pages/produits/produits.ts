@@ -11,7 +11,6 @@ import { AlertController } from 'ionic-angular';
 
 export class ProduitPage {
   productName: any;
-  productUnite: any;
   productPrice: any;
   product: any[] = [];
   constructor(public navCtrl: NavController, private storage: Storage, public toastCtrl: ToastController,public alertCtrl: AlertController) {
@@ -20,16 +19,14 @@ export class ProduitPage {
 
   async addProduct()
   {
-  	if (this.productUnite == null)
-  		this.productUnite = "Aucune";
   	if (this.productPrice == null)
   		this.productPrice = 0;
   	if (this.productName != null)
   	{
   		if (await this.checkName() == true)
   			return ;
-  		this.product[this.product.length] = "Produit : \'" + this.productName + "\' Unité : " + this.productUnite + " Prix : " + this.productPrice  + "€";
-  		this.storage.set("P_" + this.productName, this.productUnite + "~" + this.productPrice);
+  		this.product[this.product.length] = "Produit : \'" + this.productName + "\' Prix : " + this.productPrice  + "€";
+  		this.storage.set("P_" + this.productName, this.productPrice);
   		let toast = this.toastCtrl.create({
       	message: 'Le produit a bien été ajouté',
       	duration: 3000
@@ -53,8 +50,8 @@ export class ProduitPage {
   		if (key != null && key[0] == "P")
   		{
   			let parsedKey = key.split("_");
-  			let parsedValue = index.split("~");
-  			this.product[i] = "Produit : \'" + parsedKey[1] + "\' Unité : " + parsedValue[0] + " Prix : " + parsedValue[1] + "€";
+  			//let parsedValue = index.split("~");
+  			this.product[i] = "Produit : \'" + parsedKey[1] + "\' Prix : " + index + "€";
   			i++;
   		}
 		});

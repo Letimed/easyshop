@@ -25,7 +25,6 @@ export class DetailRecette {
    {
    await this.storage.get('R_' + this.myRecette).then((val) => {
    	this.myValues = val;
-    console.log(val);
   });
    }
 
