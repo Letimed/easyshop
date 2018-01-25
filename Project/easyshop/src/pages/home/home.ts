@@ -51,14 +51,14 @@ export class HomePage {
       location: 'default'
       })
       .then((db: SQLiteObject) => {
-      db.executeSql('create table IF NOT EXISTS product(id INT NOT NULL UNIQUE AUTO_INCREMENT, name TEXT NOT NULL, price INT NOT NULL)', {})
+      db.executeSql('create table IF NOT EXISTS product(id INT NOT NULL AUTO_INCREMENT, name TEXT NOT NULL, price INT NOT NULL)', {})
         .then(() => console.log('LOADING PRODUCT : OK'))
         .catch(e => console.log(e));
       // SELECT MAX(id) FROM recipe
-      db.executeSql('create table IF NOT EXISTS recipe(id  int NOT NULL, name TEXT NOT NULL, idProduct INT NOT NULL, quantity INT NOT NULL)', {})
+      db.executeSql('create table IF NOT EXISTS recipe(id INT NOT NULL, name TEXT NOT NULL, idProduct INT NOT NULL, quantity INT NOT NULL)', {})
         .then(() => console.log('LOADING RECIPE : OK'))
         .catch(e => console.log(e));
-      db.executeSql('create table IF NOT EXISTS list(id NOT NULL, idRecette INT NOT NULL)', {})
+      db.executeSql('create table IF NOT EXISTS list(id INT NOT NULL, idRecette INT NOT NULL)', {})
         .then(() => console.log('LOADING LIST : OK'))
         .catch(e => console.log(e));
     })
