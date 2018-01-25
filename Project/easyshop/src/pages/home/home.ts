@@ -21,7 +21,10 @@ export class HomePage {
 
 
   constructor(public navCtrl: NavController, private oneSignal: OneSignal, private http: Http, private sqlite: SQLite) {
-    /*this.oneSignal.startInit('f1c036d3-cd14-411b-846b-d5400c9edcc1', '378512581486');
+    //
+    // ONESIGNAL INIT
+    //
+    this.oneSignal.startInit('f1c036d3-cd14-411b-846b-d5400c9edcc1', '378512581486');
 
     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
 
@@ -35,18 +38,35 @@ export class HomePage {
      console.log("B");
     });
 
-    this.oneSignal.endInit();*/
-    console.log("hello");
-  this.sqlite.create({
-    name: 'data.db',
-    location: 'default'
+    this.oneSignal.endInit();
+    //
+    //ONE SIGNAL END
+    //
+
+    //
+    // INIT DATABASE
+    //
+    this.sqlite.create({
+      name: 'data.db',
+      location: 'default'
+      })
+      .then((db: SQLiteObject) => {
+      db.executeSql('create table IF NOT EXISTS product(id INT NOT NULL AUTO_INCREMENT UNIQUE, name TEXT NOT NULL, price INT NOT NULL)', {})
+        .then(() => console.log('LOADING PRODUCT : OK'))
+        .catch(e => console.log(e));
+      // SELECT MAX(id) FROM recipe
+      db.executeSql('create table IF NOT EXISTS recipe(id  int NOT NULL, name TEXT NOT NULL, idProduct INT NOT NULL, quantity INT NOT NULL)', {})
+        .then(() => console.log('LOADING RECIPE : OK'))
+        .catch(e => console.log(e));
+      db.executeSql('create table IF NOT EXISTS list(id NOT NULL, idRecette INT NOT NULL)', {})
+        .then(() => console.log('LOADING LIST : OK'))
+        .catch(e => console.log(e));
     })
-    .then((db: SQLiteObject) => {
-    db.executeSql('create table IF NOT EXISTS product(name TEXT, quantity INT)', {})
-      .then(() => console.log('Executed SQL'))
-      .catch(e => console.log(e));
-  })
-  .catch(e => console.log(e));
+    .catch(e => console.log(e));
+    //
+    // END DATABASE
+    //
+
   }
 
   geoLocButton() {
