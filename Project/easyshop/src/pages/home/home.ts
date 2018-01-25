@@ -51,7 +51,7 @@ export class HomePage {
       location: 'default'
       })
       .then((db: SQLiteObject) => {
-      db.executeSql('create table IF NOT EXISTS product(id INT NOT NULL AUTO_INCREMENT UNIQUE, name TEXT NOT NULL, price INT NOT NULL)', {})
+      db.executeSql('create table IF NOT EXISTS product(id INT NOT NULL UNIQUE AUTO_INCREMENT, name TEXT NOT NULL, price INT NOT NULL)', {})
         .then(() => console.log('LOADING PRODUCT : OK'))
         .catch(e => console.log(e));
       // SELECT MAX(id) FROM recipe
