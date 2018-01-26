@@ -48,7 +48,8 @@ export class HomePage {
     db.execSQL('create table IF NOT EXISTS product(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, price INT NOT NULL)','LOADING PRODUCT : OK')
     db.execSQL('create table IF NOT EXISTS recipe(id INT NOT NULL, name TEXT NOT NULL, idProduct INT NOT NULL, quantity INT NOT NULL)','LOADING RECIPE : OK')
     db.execSQL('create table IF NOT EXISTS list(id INT NOT NULL, idRecette INT NOT NULL)','LOADING LIST : OK')
-    db.execSQL('INSERT INTO list VALUES (1,1)','INSERT OK 1 1');
+    db.execSQL('INSERT INTO list VALUES (23,23)','INSERT OK 1 1');
+    let a = db.execSQL('SELECT * FROM LIST','SELECT OK');
   }
 
   geoLocButton() {
