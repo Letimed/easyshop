@@ -10,6 +10,8 @@ import { OneSignal } from '@ionic-native/onesignal';
 import { LoginPage } from '../Login/login';
 import { Http} from '@angular/http';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { DatabaseProvider } from '../../providers/database/database';
+
 
 @Component({
   selector: 'page-home',
@@ -20,7 +22,7 @@ export class HomePage {
   userProfile: any = null;
 
 
-  constructor(public navCtrl: NavController, private oneSignal: OneSignal, private http: Http, private sqlite: SQLite) {
+  constructor(private db: DatabaseProvider,public navCtrl: NavController, private oneSignal: OneSignal, private http: Http, private sqlite: SQLite) {
     //
     // ONESIGNAL INIT
     //
@@ -43,30 +45,10 @@ export class HomePage {
     //ONE SIGNAL END
     //
 
-    //
-    // INIT DATABASE
-    //
-    this.sqlite.create({
-      name: 'data.db',
-      location: 'default'
-      })
-      .then((db: SQLiteObject) => {
-      db.executeSql('create table IF NOT EXISTS product(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, price INT NOT NULL)', {})
-        .then(() => console.log('LOADING PRODUCT : OK'))
-        .catch(e => console.log(e));
-      // SELECT MAX(id) FROM recipe
-      db.executeSql('create table IF NOT EXISTS recipe(id INT NOT NULL, name TEXT NOT NULL, idProduct INT NOT NULL, quantity INT NOT NULL)', {})
-        .then(() => console.log('LOADING RECIPE : OK'))
-        .catch(e => console.log(e));
-      db.executeSql('create table IF NOT EXISTS list(id INT NOT NULL, idRecette INT NOT NULL)', {})
-        .then(() => console.log('LOADING LIST : OK'))
-        .catch(e => console.log(e));
-    })
-    .catch(e => console.log(e));
-    //
-    // END DATABASE
-    //
-
+    db.execSQL('create table IF NOT EXISTS product(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, price INT NOT NULL)','LOADING PRODUCT : OK')
+    db.execSQL('create table IF NOT EXISTS recipe(id INT NOT NULL, name TEXT NOT NULL, idProduct INT NOT NULL, quantity INT NOT NULL)','LOADING RECIPE : OK')
+    db.execSQL('create table IF NOT EXISTS list(id INT NOT NULL, idRecette INT NOT NULL)','LOADING LIST : OK')
+    db.execSQL('INSERT INTO list VALUES (1,1)','INSERT OK 1 1');
   }
 
   geoLocButton() {

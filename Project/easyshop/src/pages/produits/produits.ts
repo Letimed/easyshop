@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { ToastController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+
 
 @Component({
   selector: 'page-produit',
@@ -13,7 +15,7 @@ export class ProduitPage {
   productName: any;
   productPrice: any;
   product: any[] = [];
-  constructor(public navCtrl: NavController, private storage: Storage, public toastCtrl: ToastController,public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, private storage: Storage, public toastCtrl: ToastController,public alertCtrl: AlertController,private sqlite: SQLite) {
   	this.fillProduct();
   }
 

@@ -28,6 +28,7 @@ import { HttpModule} from '@angular/http';
 import { Http } from '@angular/http';
 import { Facebook } from '@ionic-native/facebook';
 import { OneSignal } from '@ionic-native/onesignal';
+import { DatabaseProvider } from '../providers/database/database';
 
 
 
@@ -88,6 +89,8 @@ export const config = {
     ShopService,
     OneSignal,
     SQLite,
+    DatabaseProvider,
+    DatabaseProvider,
   ]
 })
 export class AppModule {}
