@@ -30,7 +30,8 @@ export class ProduitPage {
   		if (await this.checkName() == true)
   			return ;
   		this.product[this.product.length] = "Produit : \'" + this.productName + "\' Prix : " + this.productPrice  + "€";
-      await this.db.execSQL('INSERT INTO PRODUCT VALUE (\''+this.productName+'\','+ this.productPrice +')','Insert Product');
+      await this.db.execSQL('INSERT INTO product (name, price) VALUES (\''+this.productName+'\',\'' + this.productPrice + '\')','Insert Product');
+      //this.fillProduct();
   		let toast = this.toastCtrl.create({
       	message: 'Le produit a bien été ajouté',
       	duration: 3000
@@ -51,17 +52,17 @@ export class ProduitPage {
 		this.product = [];
     await this.db.execSQL("SELECT * FROM product","Get all product");
     let i = 0
-    while (i < this.db.cmd.length)
+    while (i < this.db.cmd.rows.length)
     {
-      this.product[i] = 'Produit : ' + this.db.cmd.item(i).name + ' Prix : ' + this.db.cmd.item(i).price + ' €';
+      this.product[i] = 'Produit : \'' + this.db.cmd.rows.item(i).name + '\' Prix : \'' + this.db.cmd.rows.item(i).price + '\' €';
+      console.log(this.product[i]);
       i = i + 1;
     }
 	}
 
 	async checkName()
 	{
-    console.log(this.productName);
-    await this.db.execSQL('SELECT * from product where name = '+ this.productName,'GET NAME DB')
+    await this.db.execSQL('SELECT * from product where name=\''+this.productName+'\'','GET NAME DB')
     if (this.db.cmd.rows.length == 0)
       { return false; }
      else
@@ -89,7 +90,7 @@ export class ProduitPage {
           text: 'Oui',
           handler: () => {
           	let stringToRm = item.split("\'");
-            this.db.execSQL('DELETE FROM product WHERE name = ' + stringToRm[1],'Delete Product');
+            this.db.execSQL('DELETE FROM product WHERE name =\''+ stringToRm[1]+'\'','Delete Product');
             this.fillProduct();
 			let toast = this.toastCtrl.create({
       		message: 'Produit supprimé',

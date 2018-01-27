@@ -90,7 +90,6 @@ export const config = {
     OneSignal,
     SQLite,
     DatabaseProvider,
-    DatabaseProvider,
   ]
 })
 export class AppModule {}
