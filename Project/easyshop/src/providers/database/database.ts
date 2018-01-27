@@ -6,23 +6,13 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 @Injectable()
 export class DatabaseProvider {
+	public cmd = null;
 
   constructor(public http: Http, private sqlite: SQLite) {
     console.log('Hello DatabaseProvider Provider');
   }
 
   async execSQL(command, log) {
-    /*this.sqlite.create({
-      name: 'data.db',
-      location: 'default'
-      })
-      .then((db: SQLiteObject) => {
-      db.executeSql(command, {})
-        .then(() => console.log(log))
-        .catch(e => console.log(e));
-    })
-    .catch(e => console.log(e));*/
-	
 	let db: SQLiteObject;
 	try {
 	  db = await this.sqlite.create({
@@ -32,13 +22,18 @@ export class DatabaseProvider {
       try {
       	let res =  await db.executeSql(command,{});
       	console.log(log);
+      	this.cmd = res;
       	return res.rows;
       }
       catch (e)
-      { console.log(e);}
+      { 
+      console.log(e);
+      }
 
 	}
 	catch(e)
-	{ console.log(e); }
+	{ 
+		console.log(e);
+	}
 	}
 }

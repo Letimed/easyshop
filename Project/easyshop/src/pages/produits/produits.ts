@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { ToastController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { DatabaseProvider } from '../../providers/database/database';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class ProduitPage {
   productName: any;
   productPrice: any;
   product: any[] = [];
-  constructor(public navCtrl: NavController, private storage: Storage, public toastCtrl: ToastController,public alertCtrl: AlertController,private sqlite: SQLite) {
+  constructor(private db: DatabaseProvider,public navCtrl: NavController, private storage: Storage, public toastCtrl: ToastController,public alertCtrl: AlertController,private sqlite: SQLite) {
+
   	this.fillProduct();
   }
 
@@ -28,7 +30,7 @@ export class ProduitPage {
   		if (await this.checkName() == true)
   			return ;
   		this.product[this.product.length] = "Produit : \'" + this.productName + "\' Prix : " + this.productPrice  + "€";
-  		this.storage.set("P_" + this.productName, this.productPrice);
+      await this.db.execSQL('INSERT INTO PRODUCT VALUE (\''+this.productName+'\','+ this.productPrice +')','Insert Product');
   		let toast = this.toastCtrl.create({
       	message: 'Le produit a bien été ajouté',
       	duration: 3000
@@ -44,33 +46,33 @@ export class ProduitPage {
   	}
   }
 
-	fillProduct()
+	async fillProduct()
 	{
 		this.product = [];
-		let i = 0;
-  		this.storage.forEach((index, key, value) => {
-  		if (key != null && key[0] == "P")
-  		{
-  			let parsedKey = key.split("_");
-  			//let parsedValue = index.split("~");
-  			this.product[i] = "Produit : \'" + parsedKey[1] + "\' Prix : " + index + "€";
-  			i++;
-  		}
-		});
+    await this.db.execSQL("SELECT * FROM product","Get all product");
+    let i = 0
+    while (i < this.db.cmd.length)
+    {
+      this.product[i] = 'Produit : ' + this.db.cmd.item(i).name + ' Prix : ' + this.db.cmd.item(i).price + ' €';
+      i = i + 1;
+    }
 	}
 
 	async checkName()
 	{
-		if (await this.storage.get("P_" + this.productName) == undefined) { return false; }
-		else
-		{
-		let toast = this.toastCtrl.create({
-      	message: 'Le produit existe déjà',
-      	duration: 3000
-    	});
-    	toast.present();
-		return true;
-		}
+    console.log(this.productName);
+    await this.db.execSQL('SELECT * from product where name = '+ this.productName,'GET NAME DB')
+    if (this.db.cmd.rows.length == 0)
+      { return false; }
+     else
+     {
+     let toast = this.toastCtrl.create({
+        message: 'Le produit existe déjà',
+        duration: 3000
+      });
+      toast.present();
+    return true; 
+     }
 	}
 
 	async showConfirm(item: any) {
@@ -87,7 +89,7 @@ export class ProduitPage {
           text: 'Oui',
           handler: () => {
           	let stringToRm = item.split("\'");
-            this.storage.remove("P_" + stringToRm[1]);
+            this.db.execSQL('DELETE FROM product WHERE name = ' + stringToRm[1],'Delete Product');
             this.fillProduct();
 			let toast = this.toastCtrl.create({
       		message: 'Produit supprimé',
