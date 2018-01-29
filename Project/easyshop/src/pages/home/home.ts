@@ -26,7 +26,7 @@ export class HomePage {
     //
     // ONESIGNAL INIT
     //
-    /*this.oneSignal.startInit('f1c036d3-cd14-411b-846b-d5400c9edcc1', '378512581486');
+    this.oneSignal.startInit('f1c036d3-cd14-411b-846b-d5400c9edcc1', '378512581486');
     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
     this.oneSignal.handleNotificationReceived().subscribe(() => {
     });
@@ -34,7 +34,7 @@ export class HomePage {
     this.oneSignal.handleNotificationOpened().subscribe(() => {
     });
 
-    this.oneSignal.endInit();*/
+    this.oneSignal.endInit();
     //
     //ONE SIGNAL END
     //
