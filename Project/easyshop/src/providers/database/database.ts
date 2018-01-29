@@ -10,8 +10,7 @@ export class DatabaseProvider {
 	public db: SQLiteObject = null;
 
   constructor(public http: Http, private sqlite: SQLite) {
-  	console.log("HERRRRRRRRRRRE");
-  	//this.launchDB();
+
   }
 
   async launchDB()
