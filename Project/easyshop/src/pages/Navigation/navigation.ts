@@ -16,9 +16,7 @@ export class NavigationPage {
 	map: GoogleMap;
 
   constructor(public navCtrl: NavController,private geolocation: Geolocation, private _googleMaps: GoogleMaps,public shopService: ShopService) {
-  	console.log("before position get !")
   	this.geolocation.getCurrentPosition().then((position) => {
-  		console.log("Position get ! ");
 	}).catch((error) => {
 	  console.log('Error getting location', error);
 	});
@@ -96,7 +94,7 @@ export class NavigationPage {
 	initMap(){
 		let element = this.mapElement.nativeElement;
 		this.map = this._googleMaps.create(element);
-		//this.setShopMarker();
+		this.setShopMarker();
 	}
 
 	moveCamera(loc: LatLng){
