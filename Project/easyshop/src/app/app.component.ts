@@ -10,7 +10,7 @@ import { LoginPage } from '../pages/Login/login';
 import { ListePage } from '../pages/ListesDeCourses/liste';
 import { OptionPage } from '../pages/options/options';
 import { ProduitPage } from '../pages/produits/produits';
-import { generateList } from '../pages/generateListe/generateList'
+import { generateList } from '../pages/GenerateListe/generateList'
 import { mesRecettes } from '../pages/mesRecettes/mesRecettes';
 import { affichageRecette } from '../pages/affichageRecette/affichageRecette';
 import { DetailRecette } from '../pages/detailRecette/detailRecette';
