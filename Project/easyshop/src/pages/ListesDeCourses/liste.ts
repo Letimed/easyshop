@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { generateList } from '../generateListe/generateList'
+import { generateList } from '../GenerateListe/generateList'
 
 @Component({
   selector: 'page-liste',

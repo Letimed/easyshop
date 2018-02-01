@@ -13,7 +13,7 @@ import { OptionPage } from '../pages/options/options';
 import { ProduitPage } from '../pages/produits/produits';
 import { mesRecettes } from '../pages/mesRecettes/mesRecettes';
 import { DetailRecette } from '../pages/detailRecette/detailRecette';
-import { generateList } from '../pages/generateListe/generateList';
+import { generateList } from '../pages/GenerateListe/generateList';
 import { affichageRecette } from '../pages/affichageRecette/affichageRecette';
 
 import { Firebase } from '@ionic-native/firebase';
