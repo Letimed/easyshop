@@ -11,9 +11,12 @@ declare var require: any
   templateUrl: 'navigation.html'
 })
 
+
 export class NavigationPage {
 	@ViewChild('map') mapElement: ElementRef;
 	map: GoogleMap;
+
+
 
   constructor(public navCtrl: NavController,private geolocation: Geolocation, private _googleMaps: GoogleMaps,public shopService: ShopService) {
   	this.geolocation.getCurrentPosition().then((position) => {
@@ -100,8 +103,8 @@ export class NavigationPage {
 	moveCamera(loc: LatLng){
 		let options: CameraPosition<any> = {
 			target: loc,
-			zoom: 15,
-			tilt: 10
+			zoom: 18,
+			tilt: 25
 		};
 		this.map.moveCamera(options)
 	}

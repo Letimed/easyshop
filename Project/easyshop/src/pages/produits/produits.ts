@@ -51,11 +51,10 @@ export class ProduitPage {
 	{
 		this.product = [];
     await this.db.execSQL("SELECT * FROM product","Get all product");
-    let i = 0
+    let i = 0;
     while (i < this.db.cmd.rows.length)
     {
       this.product[i] = 'Produit : \'' + this.db.cmd.rows.item(i).name + '\' Prix : \'' + this.db.cmd.rows.item(i).price + '\' €';
-      console.log(this.product[i]);
       i = i + 1;
     }
 	}
