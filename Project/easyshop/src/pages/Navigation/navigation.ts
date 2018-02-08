@@ -2,7 +2,6 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps, GoogleMap,Marker, MarkerOptions, CameraPosition, LatLng, GoogleMapsEvent } from '@ionic-native/google-maps'
-import { ShopService } from '../../providers/shop-service/shop-service';
 declare var require: any
 
 
@@ -18,7 +17,7 @@ export class NavigationPage {
 
 
 
-  constructor(public navCtrl: NavController,private geolocation: Geolocation, private _googleMaps: GoogleMaps,public shopService: ShopService) {
+  constructor(public navCtrl: NavController,private geolocation: Geolocation, private _googleMaps: GoogleMaps) {
   	this.geolocation.getCurrentPosition().then((position) => {
 	}).catch((error) => {
 	  console.log('Error getting location', error);

@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { ToastController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { DatabaseProvider } from '../../providers/database/database';
 
 
@@ -16,7 +14,7 @@ export class ProduitPage {
   productName: any;
   productPrice: any;
   product: any[] = [];
-  constructor(private db: DatabaseProvider,public navCtrl: NavController, private storage: Storage, public toastCtrl: ToastController,public alertCtrl: AlertController,private sqlite: SQLite) {
+  constructor(private db: DatabaseProvider,public navCtrl: NavController, public toastCtrl: ToastController,public alertCtrl: AlertController) {
 
   	this.fillProduct();
   }

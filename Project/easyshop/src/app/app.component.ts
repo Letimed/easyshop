@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { NavigationPage } from '../pages/Navigation/navigation';
@@ -10,16 +9,8 @@ import { LoginPage } from '../pages/Login/login';
 import { ListePage } from '../pages/ListesDeCourses/liste';
 import { OptionPage } from '../pages/options/options';
 import { ProduitPage } from '../pages/produits/produits';
-import { generateList } from '../pages/GenerateListe/generateList'
 import { mesRecettes } from '../pages/mesRecettes/mesRecettes';
-import { affichageRecette } from '../pages/affichageRecette/affichageRecette';
-import { DetailRecette } from '../pages/detailRecette/detailRecette';
-import { Firebase } from '@ionic-native/firebase';
-import { MenuListPage } from '../pages/menu-list/menu-list'; 
 
-import { Geolocation } from '@ionic-native/geolocation';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
-import firebase from 'firebase';
 
 @Component({
   templateUrl: 'app.html'

@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
-import { affichageRecette } from '../affichageRecette/affichageRecette';
 import { DatabaseProvider } from '../../providers/database/database';
 import { ToastController } from 'ionic-angular';
 import { ListePage } from '../ListesDeCourses/liste';
@@ -19,7 +17,7 @@ export class generateList {
 	  myRecette: string[] = [];
 	  listName: any;
 
-	  constructor(private db: DatabaseProvider, public navCtrl: NavController,public toastCtrl: ToastController, private storage: Storage) {
+	  constructor(private db: DatabaseProvider, public navCtrl: NavController,public toastCtrl: ToastController) {
 	  	this.fillName();
 		}
 
