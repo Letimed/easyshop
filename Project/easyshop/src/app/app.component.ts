@@ -15,6 +15,7 @@ import { mesRecettes } from '../pages/mesRecettes/mesRecettes';
 import { affichageRecette } from '../pages/affichageRecette/affichageRecette';
 import { DetailRecette } from '../pages/detailRecette/detailRecette';
 import { Firebase } from '@ionic-native/firebase';
+import { MenuListPage } from '../pages/menu-list/menu-list'; 
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';

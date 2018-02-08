@@ -70,7 +70,7 @@ export class ProduitPage {
 	async showConfirm(item: any) {
     let confirm = this.alertCtrl.create({
       title: 'Supprimer ?',
-      message: 'Êtes-vous sûr de vouloir supprimer définitivement se produit ?',
+      message: 'Êtes-vous sûr de vouloir supprimer définitivement le produit ?',
       buttons: [
         {
           text: 'Non',
