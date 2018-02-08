@@ -23,28 +23,24 @@ export class ProduitPage {
 
   async addProduct()
   {
-  	if (this.productPrice == null)
-  		this.productPrice = 0;
+    if (this.productPrice == null)
+      this.productPrice = 0;
+    let price = parseFloat(this.productPrice);
+    if (isNaN(price))
+    {
+      this.doToast('Prix incorrecte');
+      return ;
+    }
   	if (this.productName != null)
   	{
   		if (await this.checkName() == true)
   			return ;
-  		this.product[this.product.length] = "Produit : \'" + this.productName + "\' Prix : " + this.productPrice  + "€";
-      await this.db.execSQL('INSERT INTO product (name, price) VALUES (\''+this.productName+'\',\'' + this.productPrice + '\')','Insert Product');
-      //this.fillProduct();
-  		let toast = this.toastCtrl.create({
-      	message: 'Le produit a bien été ajouté',
-      	duration: 3000
-    	});
-    	toast.present();
+  		this.product[this.product.length] = "Produit : \'" + this.productName + "\' Prix : " + price  + "€";
+      await this.db.execSQL('INSERT INTO product (name, price) VALUES (\''+this.productName+'\',\'' + price + '\')','Insert Product');
+      this.doToast('Le produit a bien été ajouté');
 	  }
-	  else {
-		  let toast = this.toastCtrl.create({
-      	message: 'Nom de produit incorrect',
-      	duration: 3000
-      });
-		   toast.present();
-  	}
+	  else 
+      this.doToast('Nom de produit incorrect');
   }
 
 	async fillProduct()
@@ -66,12 +62,8 @@ export class ProduitPage {
       { return false; }
      else
      {
-     let toast = this.toastCtrl.create({
-        message: 'Le produit existe déjà',
-        duration: 3000
-      });
-      toast.present();
-    return true; 
+       this.doToast('Le produit existe déjà');
+       return true;
      }
 	}
 
@@ -102,4 +94,15 @@ export class ProduitPage {
     });
     confirm.present();
   }
+
+
+doToast(message: string)
+  {
+    let toast = this.toastCtrl.create({
+        message: message,
+        duration: 3000
+      });
+      toast.present();
+  }
 }
+
