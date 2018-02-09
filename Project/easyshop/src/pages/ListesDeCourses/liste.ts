@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { generateList } from '../GenerateListe/generateList'
+import { generateList } from '../GenerateListe/generateList';
+import { MenuListPage } from '../menu-list/menu-list'; 
+
 
 @Component({
   selector: 'page-liste',
@@ -16,6 +18,7 @@ export class ListePage {
   }
 
     myListeButton() {
+    this.navCtrl.push(MenuListPage);
   	console.log("click myListeButton");
   }
 

@@ -93,13 +93,13 @@
     <plugin name="cordova-plugin-geolocation" spec="git+https://github.com/apache/cordova-plugin-geolocation.git">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="Pour vous localisez" />
     </plugin>
+    <plugin name="cordova-plugin-googlemaps" spec="git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps">
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAr8yn7oGKdviolqIe6BHfw2TG6vX1ewBI" />
+    </plugin>
     <plugin name="cordova-plugin-splashscreen" spec="git+https://github.com/apache/cordova-plugin-splashscreen.git" />
     <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
         <variable name="APP_ID" value="122320931779870" />
         <variable name="APP_NAME" value="easyshop" />
     </plugin>
     <plugin name="onesignal-cordova-plugin" spec="^2.2.4" />
-    <plugin name="cordova-plugin-googlemaps" spec="git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps">
-        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAr8yn7oGKdviolqIe6BHfw2TG6vX1ewBI" />
-    </plugin>
 </widget>

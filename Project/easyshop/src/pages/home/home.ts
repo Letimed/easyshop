@@ -2,13 +2,11 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NavigationPage } from '../Navigation/navigation';
 import { ListePage } from '../ListesDeCourses/liste';
-import { OptionPage } from '../options/options';
 import { ProduitPage } from '../produits/produits';
 import { RecettePage } from '../Recette/recette';
 import { mesRecettes } from '../mesRecettes/mesRecettes';
 import { OneSignal } from '@ionic-native/onesignal';
 import { Http} from '@angular/http';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { DatabaseProvider } from '../../providers/database/database';
 
 
@@ -21,7 +19,7 @@ export class HomePage {
   userProfile: any = null;
 
 
-  constructor(private db: DatabaseProvider,public navCtrl: NavController, private oneSignal: OneSignal, private http: Http, private sqlite: SQLite) {
+  constructor(private db: DatabaseProvider,public navCtrl: NavController, private oneSignal: OneSignal, private http: Http) {
     //
     // ONESIGNAL INIT
     //
@@ -46,7 +44,9 @@ export class HomePage {
   {
     await this.db.execSQL('create table IF NOT EXISTS product(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, price INT NOT NULL)','LOADING PRODUCT : OK')
     await this.db.execSQL('create table IF NOT EXISTS recipe(id INT NOT NULL, name TEXT NOT NULL, idProduct INT NOT NULL, quantity INT NOT NULL, recipePrice INT NOT NULL)','LOADING RECIPE : OK')
-    await this.db.execSQL('create table IF NOT EXISTS list(id INT NOT NULL, idRecette INT NOT NULL)','LOADING LIST : OK')
+    await this.db.execSQL('create table IF NOT EXISTS list(id INT NOT NULL, name TEXT NOT NULL, idRecette INT NOT NULL, listPrice INT NOT NULL)','LOADING LIST : OK')
+    await this.db.execSQL('INSERT INTO recipe VALUES (0, \'Soupe au choux\', 0, 1, 42)','INSERT RECIPE');
+    await this.db.execSQL('INSERT INTO recipe VALUES (0, \'Soupe a l oignons\', 0, 1, 42)','INSERT RECIPE');
   }
 
   geoLocButton() {

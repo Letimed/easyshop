@@ -7,6 +7,11 @@
 </ion-header>
 
 <ion-content>
+    <ion-item>
+      <ion-label floating>Nom de la liste</ion-label>
+      <ion-input type="text" [(ngModel)]="listName"></ion-input>
+    </ion-item>
+
   <ion-label id="mainLabel">Recettes Séléctionnées</ion-label>
   <ion-list>
     <button ion-item *ngFor="let recetteSel of myRecette">
