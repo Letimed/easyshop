@@ -7,7 +7,6 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { HomePage } from '../pages/home/home';
 import { NavigationPage } from '../pages/Navigation/navigation';
 import { RecettePage } from '../pages/Recette/recette';
-import { LoginPage } from '../pages/Login/login';
 import { ListePage } from '../pages/ListesDeCourses/liste'
 import { OptionPage } from '../pages/options/options';
 import { ProduitPage } from '../pages/produits/produits';
@@ -46,7 +45,6 @@ export const config = {
     MyApp,
     HomePage,
     NavigationPage,
-    LoginPage,
     ListePage,
     OptionPage,
     ProduitPage,
@@ -67,7 +65,6 @@ export const config = {
     MyApp,
     HomePage,
     NavigationPage,
-    LoginPage,
     ListePage,
     OptionPage,
     ProduitPage,

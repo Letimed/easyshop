@@ -80,15 +80,15 @@
       "cordova-plugin-geolocation": {
         "GEOLOCATION_USAGE_DESCRIPTION": "Pour vous localisez"
       },
-      "cordova-plugin-googlemaps": {
-        "API_KEY_FOR_ANDROID": "AIzaSyAr8yn7oGKdviolqIe6BHfw2TG6vX1ewBI"
-      },
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-facebook4": {
         "APP_ID": "122320931779870",
         "APP_NAME": "easyshop"
       },
-      "onesignal-cordova-plugin": {}
+      "onesignal-cordova-plugin": {},
+      "cordova-plugin-googlemaps": {
+        "API_KEY_FOR_ANDROID": "AIzaSyAr8yn7oGKdviolqIe6BHfw2TG6vX1ewBI"
+      }
     },
     "platforms": [
       "android"

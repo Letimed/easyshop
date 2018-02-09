@@ -61,11 +61,11 @@ export class ProduitPage {
 	}
 
 	async checkName()
-	{
+  {
     await this.db.execSQL('SELECT * from product where name=\''+this.productName+'\'','GET NAME DB')
     if (this.db.cmd.rows.length == 0)
       { return false; }
-     else
+	     else
      {
      let toast = this.toastCtrl.create({
         message: 'Le produit existe déjà',

@@ -20,6 +20,9 @@
       {{ ing }}
     </ion-item>
   </ion-list>
+<ion-row>
+    <button ion-button full color="dark"  (click)="addRecette()">Valider</button>
+  </ion-row>
 
   <br />
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
@@ -28,7 +31,5 @@
     </button>
 
 
-  <ion-row>
-    <button ion-button full color="dark"  (click)="addRecette()">Valider</button>
-  </ion-row>
+  
 </ion-content>

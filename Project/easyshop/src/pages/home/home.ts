@@ -7,7 +7,6 @@ import { ProduitPage } from '../produits/produits';
 import { RecettePage } from '../Recette/recette';
 import { mesRecettes } from '../mesRecettes/mesRecettes';
 import { OneSignal } from '@ionic-native/onesignal';
-import { LoginPage } from '../Login/login';
 import { Http} from '@angular/http';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { DatabaseProvider } from '../../providers/database/database';
@@ -51,11 +50,11 @@ export class HomePage {
   }
 
   geoLocButton() {
-  	this.navCtrl.push(NavigationPage);
+        this.navCtrl.push(NavigationPage);
   }
 
   listeButton() {
-  	this.navCtrl.push(ListePage);
+        this.navCtrl.push(ListePage);
   }
 
   produitButton() {
@@ -75,15 +74,10 @@ export class HomePage {
   }
 
   settingButton() {
-  	console.log("click settingButton");
+        console.log("click settingButton");
   }
 
-  facebookButton() {
-  	console.log("click facebookButton");
-    this.navCtrl.push(LoginPage);
-  }
-
-  pushNotif() {
+    pushNotif() {
     console.log("PushNotifButton");
     this.oneSignal.getIds().then(ids => {
       var body = {

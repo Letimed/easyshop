@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { DetailRecette } from '../detailRecette/detailRecette';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { DatabaseProvider } from '../../providers/database/database';
 
 @Component({
   selector: 'page-mesRecettes',
@@ -12,21 +14,18 @@ export class mesRecettes {
   items: any[] = [];
   recette: any[] = [];
 
-  constructor(public navCtrl: NavController, private storage: Storage) {
+  constructor(private db: DatabaseProvider, public navCtrl: NavController, private storage: Storage) {
     this.initializeItems();
   }
 
-  initializeItems() {
-      let i = 0;
-      this.storage.forEach((index, key, value) => {
-      if (key != null && key[0] == "R")
-      		{
-            let parsedKey = key.split("_");
-       			//let parsedValue = index.split("~");
-      			this.items[i] = parsedKey[1];
-      			i++;
-      		}
-    		});
+  async initializeItems() {
+    await this.db.execSQL("SELECT DISTINCT name FROM recipe ", "Get all product");
+    let i = 0;
+    while(i < this.db.cmd.rows.length)
+    {
+      this.items[i] = this.db.cmd.rows.item(i).name;
+      i=i+1;
+    }
     }
 
     itemSelected(item: any) {

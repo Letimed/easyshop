@@ -6,7 +6,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { NavigationPage } from '../pages/Navigation/navigation';
 import { RecettePage } from '../pages/Recette/recette';
-import { LoginPage } from '../pages/Login/login';
 import { ListePage } from '../pages/ListesDeCourses/liste';
 import { OptionPage } from '../pages/options/options';
 import { ProduitPage } from '../pages/produits/produits';
@@ -48,7 +47,6 @@ export class MyApp {
       { title: 'Ajouter une recette', component: RecettePage },
       { title: 'Magasins Alentours', component: NavigationPage },
       { title: 'Options', component: OptionPage },
-      { title: 'login', component: LoginPage },
       { title: 'ajouter recette', component: RecettePage },
       { title: 'mesRecettes', component: mesRecettes }
     ];
