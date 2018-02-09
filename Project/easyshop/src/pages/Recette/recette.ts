@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { ToastController } from 'ionic-angular';
-import { Injectable } from '@angular/core';
 import { AlertController } from 'ionic-angular';
 import { mesRecettes } from '../mesRecettes/mesRecettes';
 import { DatabaseProvider } from '../../providers/database/database';
@@ -20,7 +18,7 @@ export class RecettePage {
   recette: any[] = [];
   quantity: any[] = [];
 
-  constructor(private db: DatabaseProvider,private storage: Storage, public toastCtrl: ToastController, public alertCtrl: AlertController, public navCtrl: NavController) {
+  constructor(private db: DatabaseProvider, public toastCtrl: ToastController, public alertCtrl: AlertController, public navCtrl: NavController) {
     this.initializeItems();
 
   }

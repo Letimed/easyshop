@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { ToastController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';

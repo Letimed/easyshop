@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { DetailRecette } from '../detailRecette/detailRecette';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { DatabaseProvider } from '../../providers/database/database';
 
 @Component({
@@ -14,7 +12,7 @@ export class mesRecettes {
   items: any[] = [];
   recette: any[] = [];
 
-  constructor(private db: DatabaseProvider, public navCtrl: NavController, private storage: Storage) {
+  constructor(private db: DatabaseProvider, public navCtrl: NavController) {
     this.initializeItems();
   }
 
