@@ -6,6 +6,10 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
+
+
+  <button ion-button full color="dark" id="mainButton" (click)="searchOnline()">Rechercher un Produit en ligne</button>
+
 	<ion-item>
     	<ion-label floating>Nom du produit</ion-label>
     	<ion-input type="text" [(ngModel)]="productName"></ion-input>
@@ -18,7 +22,6 @@
 
 	<button ion-button full color="dark" id="mainButton" (click)="addProduct()">Ajouter un nouveau produit</button>
 
-  	<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   	<ion-list>
   		<button ion-item *ngFor="let item of product" (click)="showConfirm(item)">
     		{{ item }}
