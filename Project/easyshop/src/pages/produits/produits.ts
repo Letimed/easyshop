@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { DatabaseProvider } from '../../providers/database/database';
+import { OnlineProductPage } from '../online-product/online-product';
 
 
 @Component({
@@ -39,6 +40,11 @@ export class ProduitPage {
 	  }
 	  else 
       this.doToast('Nom de produit incorrect');
+  }
+
+  searchOnline()
+  {
+    this.navCtrl.push(OnlineProductPage);
   }
 
 	async fillProduct()

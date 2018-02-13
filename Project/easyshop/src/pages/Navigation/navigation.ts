@@ -22,8 +22,8 @@ export class NavigationPage {
 	}).catch((error) => {
 	  console.log('Error getting location', error);
 	});
-
   }
+
   	getLocation(){
   		return this.geolocation.getCurrentPosition();
   	}
