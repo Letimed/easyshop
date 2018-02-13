@@ -89,7 +89,7 @@ export class RecettePage {
           if (this.recette == null || this.recette.length == 0){
             this.createtoast('cette recette ne contient pas de produits');
           }
-                    let i = 0;
+          let i = 0;
           while ( i < this.recette.length)
           {
             await this.db.execSQL('SELECT id FROM product WHERE name =\''+ this.recette[i] +'\'', "get id from product");
@@ -103,9 +103,10 @@ export class RecettePage {
             }
             // insert into bdd 
             await this.db.execSQL('INSERT INTO recipe (id, name, idProduct, quantity, recipePrice) VALUES (\''+ newidmax +'\',\'' + this.recetteName + '\',\'' + ingid + '\',\'' + this.quantity[i] +'\',\''+ '0' +'\')','Insert Recette');
-            this.createtoast('La recette a bien été ajouté');
+            newidmax = newidmax + 1;
             i = i + 1;
           }
+        this.createtoast('La recette a bien été ajouté');
         this.clearAll();
         }
   }

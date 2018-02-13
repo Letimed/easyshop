@@ -10,8 +10,11 @@
 
 <ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let recette of items" (click)="itemSelected(recette)">
-      {{ recette }}
+    <button ion-item *ngFor="let item of recette" (click)="itemSelected(item)" style="float: left">
+      {{ item }}
+      <!--<button>
+      <ion-icon name="md-close" style="float: right" (click)="showConfirm()"></ion-icon>
+      </button>-->
     </button>
   </ion-list>
 </ion-content>
