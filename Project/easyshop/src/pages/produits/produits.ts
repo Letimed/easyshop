@@ -99,7 +99,6 @@ export class ProduitPage {
     confirm.present();
   }
 
-
 doToast(message: string)
   {
     let toast = this.toastCtrl.create({

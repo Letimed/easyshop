@@ -45,7 +45,7 @@ async aa()
 
     async itemSelected(item: any) {
           this.recetteSelected.push(item);
-          await this.db.execSQL("SELECT idProduct FROM recipe WHERE name = " + item , "Get ing from name");
+          await this.db.execSQL("SELECT idProduct FROM recipe WHERE name=\'" + item + '\'' , "Get ing from name");
           let j = 0;
           let a = 1;
           console.log("resetteelected 0 :" + this.recetteSelected[0]);
