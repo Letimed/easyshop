@@ -17,7 +17,6 @@ export class mesRecettes {
 
   constructor(private db: DatabaseProvider, public navCtrl: NavController, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.fillRecette();
-    this.aa();
   }
 
 
