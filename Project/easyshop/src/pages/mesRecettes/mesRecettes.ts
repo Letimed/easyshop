@@ -49,7 +49,7 @@ export class mesRecettes {
         j++;
         a++;
        }
-     let k = 1;
+     let k = 0;
      while (k < this.recetteSelected.length)
        {
         let l = 0;

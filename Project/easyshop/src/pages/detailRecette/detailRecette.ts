@@ -13,9 +13,9 @@ export class DetailRecette {
 
   myRecette: any[] = [];
   uniqueOccurency: any[] = [];
-  numberOccurency: any[] = [];
+  numberOccurency: number[] = [];
   finaltab: any[] = [];
-  myRecetteQuantity: any[] = [];
+  myRecetteQuantity: number[] = [];
   name: any;
 
   constructor(public toastCtrl: ToastController, public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
@@ -23,11 +23,9 @@ export class DetailRecette {
     this.myRecette = navParams.get('selectedRecette');
     this.name = navParams.get('nameRecette');
     this.myRecetteQuantity = navParams.get('selectedRecetteQuantity');
-    console.log("myrecettequantity : " + this.myRecetteQuantity);
     this.uniqueOccurence();
     this.numberOccurence();
     this.fusion();
-    // this.checkquantity();
    }
 
    uniqueOccurence(){
@@ -49,34 +47,32 @@ export class DetailRecette {
          this.uniqueOccurency.push(this.myRecette[i])
        i++;
      }
-     console.log("unique occurency :" + this.uniqueOccurency);
    }
 
    numberOccurence()
    {
-  let a = 0 ;
-  console.log("TAILLE RECETTE TAB : " + this.myRecette.length);
-  while (a < this.uniqueOccurency.length)
-  {
-    let cpt = 0;
-    let i = 0;
-    console.log("a :" + a);
-    while (i < this.myRecette.length)
-    {
-      console.log("i : " + i);
-      if (this.uniqueOccurency[a] == this.myRecette[i])
-      {
-        console.log('myrecette[i] : ' + this.myRecette[i]);
-        console.log('uniqueoccurence[a] : ' + this.myRecette[a]);
-        console.log("cpt : " + cpt);
-      cpt = cpt + this.myRecetteQuantity[i];
-      }
-       i++;
-    }
-    a++;
-    this.uniqueOccurency.push(cpt);
-   }
-   console.log("numberOccurency : " + this.numberOccurency);
+     let i = 0;
+
+     while (i < this.uniqueOccurency.length)
+     {
+       let x = 0;
+       while (x < this.myRecette.length)
+       {
+         if(this.uniqueOccurency[i] == this.myRecette[x])
+           {
+             if (this.numberOccurency[i] == undefined)
+             {
+               this.numberOccurency.push(this.myRecetteQuantity[x]);
+             }
+             else
+             {
+               this.numberOccurency[i] += this.myRecetteQuantity[x];
+             }
+           }
+         x = x + 1;
+       }
+       i = i + 1;
+     }
    }
 
    fusion()
