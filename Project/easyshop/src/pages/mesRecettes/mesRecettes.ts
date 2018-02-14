@@ -15,6 +15,7 @@ export class mesRecettes {
   recette: any[] = [];
   recetteSelected: any[] = [];
   recetteSelectedItem: any[] = [];
+  recetteSelectedItemQuantity: any[] = [];
 
   constructor(private db: DatabaseProvider, public navCtrl: NavController, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.fillRecette();
@@ -36,30 +37,34 @@ export class mesRecettes {
     async itemSelected(item: any) {
       this.recetteSelected = [];
       this.recetteSelectedItem = [];
-          this.recetteSelected.push(item);
-          await this.db.execSQL("SELECT idProduct FROM recipe WHERE name=\'" + item + '\'' , "Get ing from name");
-          let j = 0;
-          let a = 1;
-          while (j < this.db.cmd.rows.length)
-          {
-            this.recetteSelected[a] = this.db.cmd.rows.item(j).idProduct;
-            j++;
-            a++;
+      this.recetteSelectedItemQuantity = [];    
+
+      await this.db.execSQL("SELECT idProduct , quantity FROM recipe WHERE name=\'" + item + '\'' , "Get ing from name");
+      let j = 0;
+      let a = 0;
+      while (j < this.db.cmd.rows.length)
+       {
+        this.recetteSelected[a] = this.db.cmd.rows.item(j).idProduct;
+        this.recetteSelectedItemQuantity[a] = this.db.cmd.rows.item(j).quantity;
+        j++;
+        a++;
+       }
+     let k = 1;
+     while (k < this.recetteSelected.length)
+       {
+        let l = 0;
+        await this.db.execSQL("SELECT name FROM product WHERE id =" + this.recetteSelected[k] , "Get ing from name");
+        while (l < this.db.cmd.rows.length)
+         {
+            this.recetteSelectedItem.push(this.db.cmd.rows.item(l).name);
+            l++;
           }
-          let k = 1;
-          while (k < this.recetteSelected.length)
-          {
-             let l = 0;
-            await this.db.execSQL("SELECT name FROM product WHERE id =" + this.recetteSelected[k] , "Get ing from name");
-            while (l < this.db.cmd.rows.length)
-            {
-              this.recetteSelectedItem.push(this.db.cmd.rows.item(l).name);
-              l++;
-            }
-            k++;
-          }
-          this.navCtrl.push(DetailRecette, {selectedRecette: this.recetteSelectedItem, 
-            nameRecette:this.recetteSelected[0]});
+         k++;
+        }
+        console.log(this.recetteSelectedItem);
+        console.log(this.recetteSelectedItemQuantity);
+        this.navCtrl.push(DetailRecette, {selectedRecette: this.recetteSelectedItem, 
+         nameRecette:item, selectedRecetteQuantity: this.recetteSelectedItemQuantity});
       }
 
     async showConfirm(item: any) {

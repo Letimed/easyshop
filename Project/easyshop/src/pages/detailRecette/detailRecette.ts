@@ -15,13 +15,15 @@ export class DetailRecette {
   uniqueOccurency: any[] = [];
   numberOccurency: any[] = [];
   finaltab: any[] = [];
+  myRecetteQuantity: any[] = [];
   name: any;
 
   constructor(public toastCtrl: ToastController, public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
     
     this.myRecette = navParams.get('selectedRecette');
     this.name = navParams.get('nameRecette');
-    console.log("NAME : " + this.name);
+    this.myRecetteQuantity = navParams.get('selectedRecetteQuantity');
+    console.log("myrecettequantity : " + this.myRecetteQuantity);
     this.uniqueOccurence();
     this.numberOccurence();
     this.fusion();
@@ -47,7 +49,7 @@ export class DetailRecette {
          this.uniqueOccurency.push(this.myRecette[i])
        i++;
      }
-     console.log(this.uniqueOccurency);
+     console.log("unique occurency :" + this.uniqueOccurency);
    }
 
    numberOccurence()
@@ -68,13 +70,7 @@ export class DetailRecette {
          this.numberOccurency.push(cpt);
        i++;
      }
-     console.log(this.numberOccurency);
-   }
-
-
-   async checkquantity()
-   {
-      // await this.db.execSQL("SELECT idProduct FROM recipe WHERE name=\'" + item + '\'' , "Get ing from name"); 
+     console.log("number occurency : " + this.numberOccurency);
    }
 
    fusion()
