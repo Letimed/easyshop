@@ -79,7 +79,6 @@
     <allow-navigation href="http://192.168.0.47:8100" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="5000" />
-    <engine name="android" spec="~6.3.0" />
     <plugin name="cordova-plugin-device" spec="^1.1.7" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-statusbar" spec="git+https://github.com/apache/cordova-plugin-statusbar.git" />
@@ -100,4 +99,5 @@
         <variable name="APP_NAME" value="easyshop" />
     </plugin>
     <plugin name="onesignal-cordova-plugin" spec="^2.2.5" />
+    <engine name="android" spec="~6.3.0" />
 </widget>
