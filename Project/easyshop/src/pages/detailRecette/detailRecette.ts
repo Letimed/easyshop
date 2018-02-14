@@ -30,7 +30,7 @@ export class DetailRecette {
 
    uniqueOccurence(){
      let i = 0;
-     this.uniqueOccurency[] = [];
+     this.uniqueOccurency = [];
      while (i < this.myRecette.length)
      {
        let a = 0;

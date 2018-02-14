@@ -34,6 +34,8 @@ export class mesRecettes {
   }
 
     async itemSelected(item: any) {
+      this.recetteSelected = [];
+      this.recetteSelectedItem = [];
           this.recetteSelected.push(item);
           await this.db.execSQL("SELECT idProduct FROM recipe WHERE name=\'" + item + '\'' , "Get ing from name");
           let j = 0;
@@ -48,7 +50,7 @@ export class mesRecettes {
           while (k < this.recetteSelected.length)
           {
              let l = 0;
-            await this.db.execSQL("SELECT name FROM product WHERE id = " + this.recetteSelected[k] , "Get ing from name");
+            await this.db.execSQL("SELECT name FROM product WHERE id =" + this.recetteSelected[k] , "Get ing from name");
             while (l < this.db.cmd.rows.length)
             {
               this.recetteSelectedItem.push(this.db.cmd.rows.item(l).name);
