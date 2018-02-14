@@ -14,6 +14,7 @@ export class mesRecettes {
   items: any[] = [];
   recette: any[] = [];
   recetteSelected: any[] = [];
+  recetteSelectedItem: any[] = [];
 
   constructor(private db: DatabaseProvider, public navCtrl: NavController, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.fillRecette();
@@ -32,33 +33,31 @@ export class mesRecettes {
        }
   }
 
-async aa()
-{
-  await this.db.execSQL("SELECT * FROM recipe where name = A" , "Get ing from name");
-          let j = 0;
-          while (j < this.db.cmd.rows.length)
-          {
-            console.log(this.db.cmd.rows.item(j).idproduct);
-            j++;
-          }
-    }
-
     async itemSelected(item: any) {
           this.recetteSelected.push(item);
           await this.db.execSQL("SELECT idProduct FROM recipe WHERE name=\'" + item + '\'' , "Get ing from name");
           let j = 0;
           let a = 1;
-          console.log("resetteelected 0 :" + this.recetteSelected[0]);
-          console.log("SIZE : " + this.db.cmd.rows.length);
           while (j < this.db.cmd.rows.length)
           {
             this.recetteSelected[a] = this.db.cmd.rows.item(j).idProduct;
-            console.log(this.db.cmd.rows.item(j).idProduct);
             j++;
             a++;
           }
-          console.log(this.recetteSelected);
-          this.navCtrl.push(DetailRecette, {selectedRecette: this.recetteSelected});
+          let k = 1;
+          while (k < this.recetteSelected.length)
+          {
+             let l = 0;
+            await this.db.execSQL("SELECT name FROM product WHERE id = " + this.recetteSelected[k] , "Get ing from name");
+            while (l < this.db.cmd.rows.length)
+            {
+              this.recetteSelectedItem.push(this.db.cmd.rows.item(l).name);
+              l++;
+            }
+            k++;
+          }
+          this.navCtrl.push(DetailRecette, {selectedRecette: this.recetteSelectedItem, 
+            nameRecette:this.recetteSelected[0]});
       }
 
     async showConfirm(item: any) {
