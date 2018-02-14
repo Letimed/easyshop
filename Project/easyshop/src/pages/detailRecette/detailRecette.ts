@@ -54,23 +54,29 @@ export class DetailRecette {
 
    numberOccurence()
    {
-     this.numberOccurency = [];
-     let i = 0;
-     while (i < this.uniqueOccurency.length)
-     {
-       let a = 0;
-       let cpt = 0 ;
-       while (a < this.myRecette.length)
-       {
-         if (this.uniqueOccurency[i] == this.myRecette[a])
-           cpt++;
-         a++;
-       }
-       if (cpt != 0)
-         this.numberOccurency.push(cpt);
+  let a = 0 ;
+  console.log("TAILLE RECETTE TAB : " + this.myRecette.length);
+  while (a < this.uniqueOccurency.length)
+  {
+    let cpt = 0;
+    let i = 0;
+    console.log("a :" + a);
+    while (i < this.myRecette.length)
+    {
+      console.log("i : " + i);
+      if (this.uniqueOccurency[a] == this.myRecette[i])
+      {
+        console.log('myrecette[i] : ' + this.myRecette[i]);
+        console.log('uniqueoccurence[a] : ' + this.myRecette[a]);
+        console.log("cpt : " + cpt);
+      cpt = cpt + this.myRecetteQuantity[i];
+      }
        i++;
-     }
-     console.log("number occurency : " + this.numberOccurency);
+    }
+    a++;
+    this.uniqueOccurency.push(cpt);
+   }
+   console.log("numberOccurency : " + this.numberOccurency);
    }
 
    fusion()
