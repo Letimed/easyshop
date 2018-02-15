@@ -19,6 +19,7 @@ export class DetailRecette {
   priceOccurency: number[] = [];
   finaltab: any[] = [];
   name: any;
+  price:any;
 
   constructor(public toastCtrl: ToastController, public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
     
@@ -85,12 +86,12 @@ export class DetailRecette {
    {
      this.finaltab = [];
      let i = 0;
-     let price =  0;
+     this.price =  0;
      while (i < this.uniqueOccurency.length)
      {
        this.finaltab.push("ingredient : " + this.uniqueOccurency[i] + " quantité : " + this.numberOccurency[i]);
-       price = price + this.numberOccurency[i] * this.priceOccurency[i];
-       console.log(price);
+       this.price = this.price + this.numberOccurency[i] * this.priceOccurency[i];
+       console.log(this.price);
        i++;
      }
    }
