@@ -8,13 +8,12 @@
 </ion-header>
 
 <ion-content padding>
-
+  <ion-label floating > {{ name }} </ion-label>
+  <ion-label floating > {{ price }} </ion-label>
   <ion-list no-line inset>
-     <ion-label floating [(ngModel)]="name"></ion-label>
     <ion-item ion-item *ngFor="let ing of finaltab" >
       {{ ing }}
     </ion-item>
-     <ion-label floating [(ngModel)]=""></ion-label>
   </ion-list>
 
 </ion-content>
