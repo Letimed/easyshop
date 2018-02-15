@@ -16,6 +16,7 @@ export class mesRecettes {
   recetteSelected: any[] = [];
   recetteSelectedItem: any[] = [];
   recetteSelectedItemQuantity: any[] = [];
+  recetteSelectedPrice: any[] = [];
 
   constructor(private db: DatabaseProvider, public navCtrl: NavController, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.fillRecette();
@@ -37,7 +38,8 @@ export class mesRecettes {
     async itemSelected(item: any) {
       this.recetteSelected = [];
       this.recetteSelectedItem = [];
-      this.recetteSelectedItemQuantity = [];    
+      this.recetteSelectedItemQuantity = []; 
+      this.recetteSelectedPrice = [];   
 
       await this.db.execSQL("SELECT idProduct , quantity FROM recipe WHERE name=\'" + item + '\'' , "Get ing from name");
       let j = 0;
@@ -53,10 +55,11 @@ export class mesRecettes {
      while (k < this.recetteSelected.length)
        {
         let l = 0;
-        await this.db.execSQL("SELECT name FROM product WHERE id =" + this.recetteSelected[k] , "Get ing from name");
+        await this.db.execSQL("SELECT name, price FROM product WHERE id =" + this.recetteSelected[k] , "Get ing from name");
         while (l < this.db.cmd.rows.length)
          {
             this.recetteSelectedItem.push(this.db.cmd.rows.item(l).name);
+            this.recetteSelectedPrice.push(this.db.cmd.rows.item(l).price);
             l++;
           }
          k++;
@@ -64,7 +67,7 @@ export class mesRecettes {
         console.log(this.recetteSelectedItem);
         console.log(this.recetteSelectedItemQuantity);
         this.navCtrl.push(DetailRecette, {selectedRecette: this.recetteSelectedItem, 
-         nameRecette:item, selectedRecetteQuantity: this.recetteSelectedItemQuantity});
+         nameRecette:item, selectedRecetteQuantity: this.recetteSelectedItemQuantity, selectedRecettePrice:this.recetteSelectedPrice});
       }
 
     async showConfirm(item: any) {

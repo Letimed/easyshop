@@ -87,7 +87,9 @@
       },
       "onesignal-cordova-plugin": {},
       "cordova-plugin-googlemaps": {
-        "API_KEY_FOR_ANDROID": "AIzaSyAr8yn7oGKdviolqIe6BHfw2TG6vX1ewBI"
+        "API_KEY_FOR_ANDROID": "AIzaSyAr8yn7oGKdviolqIe6BHfw2TG6vX1ewBI",
+        "PLAY_SERVICES_VERSION": "11.8.0",
+        "ANDROID_SUPPORT_V4_VERSION": "24.1.0"
       }
     },
     "platforms": [

@@ -12,10 +12,12 @@ import { NavParams } from 'ionic-angular';
 export class DetailRecette {
 
   myRecette: any[] = [];
+  myRecetteQuantity: number[] = [];
+  myRecettePrice: number[] = [];
   uniqueOccurency: any[] = [];
   numberOccurency: number[] = [];
+  priceOccurency: number[] = [];
   finaltab: any[] = [];
-  myRecetteQuantity: number[] = [];
   name: any;
 
   constructor(public toastCtrl: ToastController, public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
@@ -23,6 +25,7 @@ export class DetailRecette {
     this.myRecette = navParams.get('selectedRecette');
     this.name = navParams.get('nameRecette');
     this.myRecetteQuantity = navParams.get('selectedRecetteQuantity');
+    this.myRecettePrice = navParams.get('selectedRecettePrice');
     this.uniqueOccurence();
     this.numberOccurence();
     this.fusion();
@@ -44,7 +47,10 @@ export class DetailRecette {
           a++;
        }
        if (existe == false)
-         this.uniqueOccurency.push(this.myRecette[i])
+       {
+         this.uniqueOccurency.push(this.myRecette[i]);
+         this.priceOccurency.push(this.myRecettePrice[i]);
+       }
        i++;
      }
    }
@@ -79,9 +85,12 @@ export class DetailRecette {
    {
      this.finaltab = [];
      let i = 0;
+     let price =  0;
      while (i < this.uniqueOccurency.length)
      {
        this.finaltab.push("ingredient : " + this.uniqueOccurency[i] + " quantité : " + this.numberOccurency[i]);
+       price = price + this.numberOccurency[i] * this.priceOccurency[i];
+       console.log(price);
        i++;
      }
    }
