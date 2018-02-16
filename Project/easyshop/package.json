@@ -35,7 +35,7 @@
     "angularfire2": "^5.0.0-rc.0-next",
     "com.oauthio.plugins.oauthio": "https://github.com/oauth-io/oauth-phonegap",
     "cordova": "^7.1.0",
-    "cordova-android": "~6.3.0",
+    "cordova-android": "6.3.0",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-device": "^1.1.7",
     "cordova-plugin-facebook4": "^1.9.1",
@@ -80,7 +80,9 @@
         "GEOLOCATION_USAGE_DESCRIPTION": "Pour vous localisez"
       },
       "cordova-plugin-googlemaps": {
-        "API_KEY_FOR_ANDROID": "AIzaSyAr8yn7oGKdviolqIe6BHfw2TG6vX1ewBI"
+        "API_KEY_FOR_ANDROID": "AIzaSyAr8yn7oGKdviolqIe6BHfw2TG6vX1ewBI",
+        "PLAY_SERVICES_VERSION": "11.8.0",
+        "ANDROID_SUPPORT_V4_VERSION": "24.1.0"
       },
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-facebook4": {
