@@ -102,7 +102,7 @@ export class RecettePage {
               this.debug(ingid, "ingid");
             }
             // insert into bdd 
-            await this.db.execSQL('INSERT INTO recipe (id, name, idProduct, quantity, recipePrice) VALUES (\''+ newidmax +'\',\'' + this.recetteName + '\',\'' + ingid + '\',\'' + this.quantity[i] +'\',\''+ '0' +'\')','Insert Recette');
+            await this.db.execSQL('INSERT INTO recipe (id, name, idProduct, quantity) VALUES (\''+ newidmax +'\',\'' + this.recetteName + '\',\'' + ingid + '\',\'' + this.quantity[i] +'\')','Insert Recette');
             newidmax = newidmax + 1;
             i = i + 1;
           }

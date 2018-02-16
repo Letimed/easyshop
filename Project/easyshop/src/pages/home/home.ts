@@ -48,11 +48,11 @@ export class HomePage {
   }
 
   geoLocButton() {
-        this.navCtrl.push(NavigationPage);
+    this.navCtrl.push(NavigationPage);
   }
 
   listeButton() {
-        this.navCtrl.push(ListePage);
+    this.navCtrl.push(ListePage);
   }
 
   produitButton() {
@@ -72,7 +72,7 @@ export class HomePage {
   }
 
   settingButton() {
-        console.log("click settingButton");
+    console.log("click settingButton");
   }
 
     pushNotif() {
