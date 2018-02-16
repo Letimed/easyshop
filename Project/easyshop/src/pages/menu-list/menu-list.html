@@ -16,6 +16,9 @@
 <ion-content padding>
 <ion-label id="mainLabel">Mes Listes</ion-label>
 	<ion-list>
+      <button ion-item *ngFor="let item of myList" (click)="goTo(item)">
+        show detail : {{ item }}
+      </button>
   		<button ion-item *ngFor="let item of myList" (click)="showConfirm(item)">
     		{{ item }}
     	<ion-icon name="md-close" style="float: right"></ion-icon>

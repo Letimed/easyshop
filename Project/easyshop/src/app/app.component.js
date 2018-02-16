@@ -43,7 +43,6 @@ var MyApp = /** @class */ (function () {
             { title: 'Ajouter une recette', component: RecettePage },
             { title: 'Magasins Alentours', component: NavigationPage },
             { title: 'Options', component: OptionPage },
-            { title: 'login', component: LoginPage },
             { title: 'ajouter recette', component: RecettePage },
             { title: 'mesRecettes', component: mesRecettes }
         ];

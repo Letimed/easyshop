@@ -33,7 +33,7 @@ export class generateList {
     	}
 	}
 
-	async showList()
+	async showList(item: any)
 	{
 		var idList = 0;
 		let i = 0;
@@ -50,14 +50,14 @@ export class generateList {
 			idList = 0;
 		else
 			idList = this.db.cmd.rows.item(0).id + 1;
-		console.log(idList);
-		while (i < this.items.length)
+		while (i < this.myRecette.length)
 		{
-			await this.db.execSQL('SELECT DISTINCT id from recipe where name=\''+ this.items[i] +'\' ','Get Recipes IDs');
-			await this.db.execSQL('INSERT INTO LIST VALUES ('+ idList +',\''+ this.listName + '\', '+ this.db.cmd.rows.item(0).id +', -1)','INSERT LIST');
+			await this.db.execSQL('SELECT DISTINCT id from recipe where name=\''+ this.myRecette[i] +'\' ','Get Recipes IDs');
+			await this.db.execSQL('INSERT INTO LIST VALUES ('+ idList +',\''+ this.listName + '\', '+ this.db.cmd.rows.item(0).id +')','INSERT LIST');
 			i = i + 1;
 		}
 		this.doToast("Liste "+ this.listName +" ajouté")
+		await this.db.execSQL('SELECT * FROM list where id='+idList,'Gettruk');
 		this.navCtrl.push(ListePage);
 	}
 
