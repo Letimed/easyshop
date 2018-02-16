@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Detail Recette</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-label floating > {{ name }} </ion-label>
+  <ion-label floating > {{ price }} </ion-label>
+  <ion-list no-line inset>
+    <ion-item ion-item *ngFor="let ing of finaltab" >
+      {{ ing }}
+    </ion-item>
+  </ion-list>
+  {{ price}}
+</ion-content>
