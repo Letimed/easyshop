@@ -10,11 +10,11 @@
 
 <ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let item of recette" (click)="itemSelected(item)" style="float: left">
+      <button ion-item *ngFor="let item of recette" (click)="itemSelected(item)" style="float: left">
       {{ item }}
-      <!--<button>
-      <ion-icon name="md-close" style="float: right" (click)="showConfirm()"></ion-icon>
-      </button>-->
-    </button>
+      </button>
+      <button ion-item *ngFor="let item of recette" (click)="showConfirm(item)" style="float: left">
+      Delete : {{ item }}
+      </button>
   </ion-list>
 </ion-content>

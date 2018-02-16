@@ -83,7 +83,7 @@ export class mesRecettes {
         {
           text: 'Oui',
           handler: () => {
-            this.db.execSQL('DELETE FROM recette WHERE name =\''+ item+'\'','Delete Recette');
+            this.db.execSQL('DELETE FROM recipe WHERE name =\''+ item +'\'','Delete Recette');
             this.fillRecette();
                         let toast = this.toastCtrl.create({
                 message: 'Recette supprimé',
