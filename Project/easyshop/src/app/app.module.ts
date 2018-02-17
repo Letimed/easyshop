@@ -24,7 +24,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps'
 import { IonicStorageModule } from '@ionic/storage';
-import { HttpModule} from '@angular/http'; import { Facebook } from '@ionic-native/facebook';
+import { HttpModule} from '@angular/http';
 import { OneSignal } from '@ionic-native/onesignal';
 import { DatabaseProvider } from '../providers/database/database';
 
@@ -85,7 +85,6 @@ export const config = {
     Firebase,
     Geolocation,
     GoogleMaps,
-    Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     OneSignal,
     SQLite,

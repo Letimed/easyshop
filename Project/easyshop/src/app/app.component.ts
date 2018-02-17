@@ -18,7 +18,7 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{icon: string, title: string, component: any}>;
 
   fireconfig = {
     apiKey: "AIzaSyBH-4w_el5hFraTwNbJ5uQQxds7u0srb_g",
@@ -32,12 +32,12 @@ export class MyApp {
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
   this.initializeApp();
     this.pages = [
-      { title: 'Accueil', component: HomePage },
-      { title: 'Listes de courses', component: ListePage },
-      { title: 'Ajouter un produit', component: ProduitPage },
-      { title: 'Ajouter une recette', component: RecettePage },
-      { title: 'Mes recettes', component: mesRecettes },
-      { title: 'Magasins alentours', component: NavigationPage }
+      { icon: 'home', title: 'Accueil', component: HomePage },
+      { icon: 'nutrition', title: 'Ajouter un produit', component: ProduitPage },
+      { icon: 'flask', title: 'Ajouter une recette', component: RecettePage },
+      { icon: 'list', title: 'Mes recettes', component: mesRecettes },
+      { icon: 'list-box', title: 'Listes de courses', component: ListePage },
+      { icon: 'pin', title: 'Magasins alentours', component: NavigationPage }
     ];
   }
 
