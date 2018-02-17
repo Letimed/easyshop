@@ -3,15 +3,18 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-label id="brand">EASYSHOP</ion-label>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <button ion-button full color="dark" id="mainButton" (click)="listeButton()">Listes de courses</button>
-  <button ion-button full color="dark" id="mainButton" (click)="produitButton()">Ajouter un produit</button>
-  <button ion-button full color="dark" id="mainButton" (click)="recetteButton()">Ajouter une recette</button>
-  <button ion-button full color="dark" id="mainButton" (click)="mesRecetteButton()">Mes recette</button>
-  <button ion-button full color="dark" id="mainButton" (click)="geoLocButton()">Magasin alentours</button>
-  <button ion-button full color="light" id="mainButton" (click)="optionButton()">Options</button>
-  <button ion-button full color="dark" id="mainButton" (click)="pushNotif()">Push une notification</button>
+<ion-list>
+  <button  ion-button id="mainButton" (click)="listeButton()">Listes de courses</button>
+  <button  ion-button id="mainButton" (click)="produitButton()"><ion-icon name="ion-ios-nutrition"></ion-icon>
+Ajouter un produit</button>
+  <button  ion-button id="mainButton" (click)="recetteButton()">Ajouter une recette</button>
+  <button  ion-button id="mainButton" (click)="mesRecetteButton()">Mes recette</button>
+  <button  ion-button id="mainButton" (click)="geoLocButton()">Magasin alentours</button>
+  <button  ion-button id="mainButton" (click)="pushNotif()">Push une notification</button>
+</ion-list>
 </ion-content>
