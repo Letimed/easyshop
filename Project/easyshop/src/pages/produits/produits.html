@@ -8,7 +8,7 @@
 <ion-content>
 
 
-  <button ion-button full color="dark" id="mainButton" (click)="searchOnline()">Rechercher un Produit en ligne</button>
+  <button ion-button full color="dark" id="mainButton" (click)="searchOnline()">Produit en ligne</button>
 
 	<ion-item>
     	<ion-label floating>Nom du produit</ion-label>
@@ -20,7 +20,7 @@
     	<ion-input type="text" [(ngModel)]="productPrice" placeholder="0"></ion-input>
   	</ion-item>
 
-	<button ion-button full color="dark" id="mainButton" (click)="addProduct()">Ajouter un nouveau produit</button>
+	<button ion-button full color="dark" id="mainButton" (click)="addProduct()">Ajouter produit</button>
 
   	<ion-list>
   		<button ion-item *ngFor="let item of product" (click)="showConfirm(item)">

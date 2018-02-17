@@ -41,10 +41,8 @@ var MyApp = /** @class */ (function () {
             { title: 'Listes de courses', component: ListePage },
             { title: 'Ajouter un produit', component: ProduitPage },
             { title: 'Ajouter une recette', component: RecettePage },
-            { title: 'Magasins Alentours', component: NavigationPage },
-            { title: 'Options', component: OptionPage },
-            { title: 'ajouter recette', component: RecettePage },
-            { title: 'mesRecettes', component: mesRecettes }
+            { title: 'Mes recettes', component: mesRecettes },
+            { title: 'Magasins alentours', component: NavigationPage }
         ];
     }
     MyApp.prototype.initializeApp = function () {
