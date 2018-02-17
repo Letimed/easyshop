@@ -6,7 +6,6 @@ import { HomePage } from '../pages/home/home';
 import { NavigationPage } from '../pages/Navigation/navigation';
 import { RecettePage } from '../pages/Recette/recette';
 import { ListePage } from '../pages/ListesDeCourses/liste';
-import { OptionPage } from '../pages/options/options';
 import { ProduitPage } from '../pages/produits/produits';
 import { mesRecettes } from '../pages/mesRecettes/mesRecettes';
 
