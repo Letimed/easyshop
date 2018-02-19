@@ -17,12 +17,13 @@
 <ion-content padding>
 <ion-label id="mainLabel">Mes Listes</ion-label>
 	<ion-list>
-      <button ion-item *ngFor="let item of myList" (click)="goTo(item)">
-        show detail : {{ item }}
+    <ion-col  *ngFor="let item of myList">
+      <ion-item>
+        <button (click)="goTo(item)">
+          {{ item }}
       </button>
-  		<button ion-item *ngFor="let item of myList" (click)="showConfirm(item)">
-    		{{ item }}
-    	<ion-icon name="md-close" style="float: right"></ion-icon>
-  		</button>
+      <ion-icon name="md-close" (click)="showConfirm(item)" style="float: right"></ion-icon>
+      </ion-item>
+    </ion-col>
 	</ion-list>
 </ion-content>

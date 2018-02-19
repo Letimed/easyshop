@@ -89,7 +89,7 @@ export class DetailRecette {
      this.price =  0;
      while (i < this.uniqueOccurency.length)
      {
-       this.finaltab.push("ingredient : " + this.uniqueOccurency[i] + " quantité : " + this.numberOccurency[i]);
+       this.finaltab.push(this.uniqueOccurency[i] + ", Quantité : " + this.numberOccurency[i]);
        this.price = this.price + this.numberOccurency[i] * this.priceOccurency[i];
        console.log(this.price);
        i++;

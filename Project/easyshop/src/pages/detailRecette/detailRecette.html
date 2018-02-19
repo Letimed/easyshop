@@ -8,9 +8,9 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-label floating > {{ name }} </ion-label>
-  <ion-label floating > {{ price }} </ion-label>
-  <ion-list no-line inset>
+  <ion-label class="listName"> {{ name }} </ion-label>
+  <ion-label class="listPrice"> Prix : {{ price }}€ </ion-label>
+  <ion-list>
     <ion-item ion-item *ngFor="let ing of finaltab" >
       {{ ing }}
     </ion-item>
