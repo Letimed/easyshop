@@ -19,7 +19,7 @@
 	<ion-list>
     <ion-col  *ngFor="let item of myList">
       <ion-item>
-        <button (click)="goTo(item)">
+      <button class='itemName' (click)="goTo(item)">
           {{ item }}
       </button>
       <ion-icon name="md-close" (click)="showConfirm(item)" style="float: right"></ion-icon>

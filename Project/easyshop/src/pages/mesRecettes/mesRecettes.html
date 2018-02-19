@@ -12,7 +12,7 @@
   <ion-list>
     <ion-col  *ngFor="let item of recette">
       <ion-item>
-        <button (click)="itemSelected(item)">
+        <button class='itemName' (click)="itemSelected(item)">
           {{ item }}
       </button>
       <ion-icon name="md-close" (click)="showConfirm(item)" style="float: right"></ion-icon>
