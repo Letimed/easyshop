@@ -2,14 +2,13 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NavigationPage } from '../Navigation/navigation';
 import { ListePage } from '../ListesDeCourses/liste';
-import { OptionPage } from '../options/options';
 import { ProduitPage } from '../produits/produits';
 import { RecettePage } from '../Recette/recette';
 import { mesRecettes } from '../mesRecettes/mesRecettes';
 import { OneSignal } from '@ionic-native/onesignal';
-import { LoginPage } from '../Login/login';
 import { Http} from '@angular/http';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { DatabaseProvider } from '../../providers/database/database';
+
 
 @Component({
   selector: 'page-home',
@@ -20,41 +19,40 @@ export class HomePage {
   userProfile: any = null;
 
 
-  constructor(public navCtrl: NavController, private oneSignal: OneSignal, private http: Http, private sqlite: SQLite) {
+  constructor(private db: DatabaseProvider,public navCtrl: NavController, private oneSignal: OneSignal, private http: Http) {
+    //
+    // ONESIGNAL INIT
+    //
     /*this.oneSignal.startInit('f1c036d3-cd14-411b-846b-d5400c9edcc1', '378512581486');
-
     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
-
     this.oneSignal.handleNotificationReceived().subscribe(() => {
-     // do something when notification is received
-     console.log("A");
     });
 
     this.oneSignal.handleNotificationOpened().subscribe(() => {
-    // do something when a notification is opened
-     console.log("B");
     });
 
     this.oneSignal.endInit();*/
-    console.log("hello");
-  this.sqlite.create({
-    name: 'data.db',
-    location: 'default'
-    })
-    .then((db: SQLiteObject) => {
-    db.executeSql('create table IF NOT EXISTS product(name TEXT, quantity INT)', {})
-      .then(() => console.log('Executed SQL'))
-      .catch(e => console.log(e));
-  })
-  .catch(e => console.log(e));
+    //
+    //ONE SIGNAL END
+    //
+
+    this.setDB()
+
+  }
+
+  async setDB()
+  {
+    await this.db.execSQL('create table IF NOT EXISTS product(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, price INT NOT NULL)','LOADING PRODUCT : OK')
+    await this.db.execSQL('create table IF NOT EXISTS recipe(id INT NOT NULL, name TEXT NOT NULL, idProduct INT NOT NULL, quantity INT NOT NULL)','LOADING RECIPE : OK')
+    await this.db.execSQL('create table IF NOT EXISTS list(id INT NOT NULL, name TEXT NOT NULL, idRecette INT NOT NULL)','LOADING LIST : OK')
   }
 
   geoLocButton() {
-  	this.navCtrl.push(NavigationPage);
+    this.navCtrl.push(NavigationPage);
   }
 
   listeButton() {
-  	this.navCtrl.push(ListePage);
+    this.navCtrl.push(ListePage);
   }
 
   produitButton() {
@@ -74,15 +72,10 @@ export class HomePage {
   }
 
   settingButton() {
-  	console.log("click settingButton");
+    console.log("click settingButton");
   }
 
-  facebookButton() {
-  	console.log("click facebookButton");
-    this.navCtrl.push(LoginPage);
-  }
-
-  pushNotif() {
+    pushNotif() {
     console.log("PushNotifButton");
     this.oneSignal.getIds().then(ids => {
       var body = {

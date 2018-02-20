@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+   <ion-label id="brand">EASYSHOP</ion-label>
+     </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-label class="listName"> {{ name }} </ion-label>
+  <ion-label class="listPrice"> Prix : {{ price }}€ </ion-label>
+  <ion-list>
+    <ion-item ion-item *ngFor="let ing of finaltab" >
+      {{ ing }}
+    </ion-item>
+  </ion-list>
+</ion-content>

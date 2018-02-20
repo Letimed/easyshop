@@ -3,19 +3,17 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <span>
-    <button ion-button icon-only small id="iconeNav" color="dark" (click)="settingButton()"><ion-icon name="md-settings"></ion-icon></button>
-    <button ion-button icon-only small id="iconeNav" color="dark" (click)="facebookButton()"><ion-icon name="logo-facebook"></ion-icon></button>
-    </span>
+    <ion-label id="brand">EASYSHOP</ion-label>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <button ion-button full color="dark" id="mainButton" (click)="listeButton()">Listes de courses</button>
-  <button ion-button full color="dark" id="mainButton" (click)="produitButton()">Ajouter un produit</button>
-  <button ion-button full color="dark" id="mainButton" (click)="recetteButton()">Ajouter une recette</button>
-  <button ion-button full color="dark" id="mainButton" (click)="mesRecetteButton()">Mes recette</button>
-  <button ion-button full color="dark" id="mainButton" (click)="geoLocButton()">Magasin alentours</button>
-  <button ion-button full color="light" id="mainButton" (click)="optionButton()">Options</button>
-  <button ion-button full color="dark" id="mainButton" (click)="pushNotif()">Push une notification</button>
+<ion-list>
+  <button  ion-button id="mainButton" (click)="produitButton()"><ion-icon name="nutrition" id="iconeButton"></ion-icon><span class="col">Ajouter un produit</span></button>
+  <button  ion-button id="mainButton" (click)="recetteButton()"><ion-icon name="flask"></ion-icon><span class="col"> Ajouter une recette</span></button>
+  <button  ion-button id="mainButton" (click)="mesRecetteButton()"><ion-icon name="list" ></ion-icon><span class="col">Mes recettes</span></button>
+  <button  ion-button id="mainButton" (click)="listeButton()"><ion-icon name="list-box" ></ion-icon><span class="col">Listes de courses</span></button>
+  <button  ion-button id="mainButton" (click)="geoLocButton()"><ion-icon name="pin"></ion-icon><span class="col">Magasins alentours</span></button>
+  <button  ion-button id="mainButton" (click)="pushNotif()">Push une notification</button>
+</ion-list>
 </ion-content>

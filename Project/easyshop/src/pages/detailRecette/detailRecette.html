@@ -3,19 +3,16 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Ajout Recette</ion-title>
+    <ion-title>Detail Recette</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
-  <ion-list no-line inset>
-    <ion-item ion-item *ngFor="let ing of myRecette">
+  <ion-label class="listName"> {{ name }} </ion-label>
+  <ion-label class="listPrice"> Prix : {{ price }}€ </ion-label>
+  <ion-list>
+    <ion-item ion-item *ngFor="let ing of finaltab" >
       {{ ing }}
     </ion-item>
-    <ion-item ion-item *ngFor="let value of myValues">
-      {{ value }}
-    </ion-item>
   </ion-list>
-
 </ion-content>

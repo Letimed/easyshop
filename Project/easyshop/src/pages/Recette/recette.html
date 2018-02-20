@@ -3,12 +3,12 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Ajout Recette</ion-title>
+     <ion-label id="brand">EASYSHOP</ion-label>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <button ion-button color="dark" (click)="goToMesRecettes()"> Mes recettes </button>
+  <button ion-button id="mainButton" (click)="goToMesRecettes()"> Mes recettes </button>
 
   <ion-item>
     <ion-label floating>Nom Recette :</ion-label>
@@ -20,6 +20,9 @@
       {{ ing }}
     </ion-item>
   </ion-list>
+<ion-row>
+    <button ion-button id="mainButton" (click)="addRecette()">Valider</button>
+  </ion-row>
 
   <br />
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
@@ -28,7 +31,5 @@
     </button>
 
 
-  <ion-row>
-    <button ion-button full color="dark"  (click)="addRecette()">Valider</button>
-  </ion-row>
+  
 </ion-content>

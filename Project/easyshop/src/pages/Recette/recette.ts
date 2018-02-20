@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { ToastController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { mesRecettes } from '../mesRecettes/mesRecettes';
+import { DatabaseProvider } from '../../providers/database/database';
 
 @Component({
   selector: 'page-recette',
@@ -16,24 +16,41 @@ export class RecettePage {
   recetteName: any;
   items: string[] = [];
   recette: any[] = [];
+  quantity: any[] = [];
 
-  constructor(private storage: Storage, public toastCtrl: ToastController, public alertCtrl: AlertController, public navCtrl: NavController) {
+  constructor(private db: DatabaseProvider, public toastCtrl: ToastController, public alertCtrl: AlertController, public navCtrl: NavController) {
     this.initializeItems();
 
   }
-
-  initializeItems() {
+// get product from our bdd
+  async initializeItems() {
+    await this.db.execSQL("SELECT * FROM product", "Get all product");
     let i = 0;
-    this.storage.forEach((index, key, value) => {
-    if (key != null && key[0] == "P")
-    		{
-          let parsedKey = key.split("_");
-     			let parsedValue = index.split("~");
-    			this.items[i] = parsedKey[1];
-    			i++;
-    		}
-  		});
+    while(i < this.db.cmd.rows.length)
+    {
+      this.items[i] = this.db.cmd.rows.item(i).name;
+      i=i+1;
+    }
+// this.init2();       
   }
+
+// get ingredients from api 
+  /*async init2()
+  {
+    declare var require: any
+    var unirest = require('unirest');
+    unirest.get("https://datagram-products-v1.p.mashape.com/chains/")
+        .header("X-Mashape-Key", "q75JmrJtUImshhVN83hCaxDvQELbp1C5oAXjsnhNMVAXlTf1uh")
+        .header("Accept", "application/json")
+        .end(function(result) 
+        {
+            for (i of result.body)
+            {
+
+            }
+        })
+  }*/
+
 
   getItems(ev: any) {
     // Reset items back to all of the items
@@ -52,52 +69,45 @@ export class RecettePage {
 
   async addRecette()
   {
-  	if (this.recette == null){
-  		let toast = this.toastCtrl.create({
-            	message: 'recette inéxistante',
-            	duration: 3000
-        });
-      toast.present();
-   }
-   else if (this.recetteName == null) {
-  	let toast = this.toastCtrl.create({
-                	message: 'Entrez un nom pour votre recette',
-                	duration: 3000
-            });
-    toast.present();
+     if (this.recetteName === "" && this.recette === null) {
+        this.createtoast('Entrez un nom pour votre recette et completez la');
+      return;
     }
-  	else {
-  		await this.storage.set("R_" + this.recetteName, this.recette);
-  		let toast = this.toastCtrl.create({
-      	message: 'La recette a bien été ajouté',
-      	duration: 3000
-    	});
-    	toast.present();
-    	this.clearAll();
-	  }
-  }
-
-  debug(){
-    this.storage.get('R_chili').then((val) => {
-    console.log('chili : ', val);});
-  }
-
-  clearAll(){
-  this.recetteName = null;
-  this.recette = null;
- }
-
-  getListRecette(){
-  let i = 0;
-    this.storage.forEach((index, key, value) => {
-    if (key != null && key[0] == "R")
-    		{
-          let parsedKey = key.split("_");
-     			let parsedValue = index.split("~");
-    			this.recette[i] = parsedKey[1];
-    			i++;
-    		}
-  		});
+    else if( await this.recetteExist()) {
+       this.createtoast('Nom de recette déjà utilisé');
+       return;
+    }
+    else {
+          // Create new id
+          await this.db.execSQL("SELECT id FROM recipe order by id desc","Get max id");
+          let newidmax;
+          if (this.db.cmd.rows.length == 0)
+            newidmax = 0;
+          else
+            newidmax = this.db.cmd.rows.item(0).id + 1;
+          // Insert into bdd
+          if (this.recette == null || this.recette.length == 0){
+            this.createtoast('cette recette ne contient pas de produits');
+          }
+          let i = 0;
+          while ( i < this.recette.length)
+          {
+            await this.db.execSQL('SELECT id FROM product WHERE name =\''+ this.recette[i] +'\'', "get id from product");
+            let a = 0;
+            let ingid;
+            while (a < this.db.cmd.rows.length)
+            {
+              ingid = this.db.cmd.rows.item(a).id;
+              a = a + 1;
+              this.debug(ingid, "ingid");
+            }
+            // insert into bdd 
+            await this.db.execSQL('INSERT INTO recipe (id, name, idProduct, quantity) VALUES (\''+ newidmax +'\',\'' + this.recetteName + '\',\'' + ingid + '\',\'' + this.quantity[i] +'\')','Insert Recette');
+            i = i + 1;
+          }
+        this.createtoast('La recette a bien été ajouté');
+        this.clearAll();
+        }
   }
 
   itemSelected(item: string) {
@@ -107,7 +117,7 @@ export class RecettePage {
       inputs: [
         {
           name: 'quantity',
-          placeholder: 'Quantité'
+          placeholder: 'Quantity'
         },
       ],
       buttons: [
@@ -119,7 +129,14 @@ export class RecettePage {
         {
           text: 'Ajouter',
           handler: data => {
-            this.recette.push(item + ":" + data.quantity);
+            let checkvar = parseInt(data.quantity);
+            if (!isNaN(checkvar)) {
+              this.recette.push(item);
+              this.quantity.push(data.quantity);
+            }
+            else {
+              this.createtoast('Quantitée érronée');
+            }
           }
         }
       ]
@@ -127,7 +144,42 @@ export class RecettePage {
     prompt.present();
   }
 
+  debug (i, nom){
+        console.log("--------------------------------------------------------");
+        console.log(nom);
+        console.log(i);
+        console.log("--------------------------------------------------------");
+  }
+
+  clearAll(){
+  this.recetteName = "";
+  this.recette = [];
+ }
+
+ resetpage(){
+    this.navCtrl.pop();
+    this.navCtrl.push(RecettePage);
+ }
+
+ createtoast(message)
+ {
+   let toast = this.toastCtrl.create({
+              message: message,
+              duration: 3000
+          });
+          toast.present();
+ }
+
+  async recetteExist()
+  {
+    await this.db.execSQL('SELECT * from recipe where name=\''+this.recetteName+'\'','Compare recette name')
+    if (this.db.cmd.rows.length == 0)
+       return false;
+    else
+       return true;
+  }
+
   goToMesRecettes() {
-    	this.navCtrl.push(mesRecettes);
+        this.navCtrl.push(mesRecettes);
     }
 }
