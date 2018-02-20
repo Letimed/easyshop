@@ -78,6 +78,7 @@ export class ProduitPage {
       buttons: [
         {
           text: 'Non',
+          cssClass: 'classButton',
           handler: () => {
           }
         },
