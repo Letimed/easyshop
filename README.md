@@ -47,5 +47,5 @@ Téléphone utilisé pour les tests du projet :
  - Honor 6
  
 groupe numero : 15
-membre groupe : Quentin Vieira / Florian Camus-Martin
+membre groupe : Quentin Vieira / Syzik
 Nous avons tout deux assistés au cours module hybrid.
